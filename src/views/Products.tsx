@@ -19,7 +19,7 @@ const Products = () => {
           name={product.name}
           description={product.description}
           price={product.price}
-          imagePath={product.imageUrl}
+          imageUrl={product.imageUrl}
         />
       ))}
     </Stack>

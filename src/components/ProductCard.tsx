@@ -6,8 +6,10 @@ import {
   CardMedia,
   Typography,
 } from '@mui/material'
+import useStore from '../store'
 
 interface ProductCardProps {
+  id: string
   name: string
   description: string
   price: number
@@ -15,11 +17,14 @@ interface ProductCardProps {
 }
 
 const ProductCard = ({
+  id,
   name,
   description,
   price,
   imageUrl,
 }: ProductCardProps) => {
+  const { addToCart } = useStore()
+
   return (
     <Card sx={{ maxWidth: 345 }}>
       <CardMedia component='img' height='140' image={imageUrl} alt='product' />
@@ -35,7 +40,21 @@ const ProductCard = ({
         </Typography>
       </CardContent>
       <CardActions>
-        <Button size='small'>Buy</Button>
+        <Button
+          onClick={() =>
+            addToCart({
+              id,
+              name,
+              description,
+              price,
+              imageUrl,
+              quantity: 1,
+            })
+          }
+          size='small'
+        >
+          Add to cart
+        </Button>
         <Button size='small'>Learn More</Button>
       </CardActions>
     </Card>

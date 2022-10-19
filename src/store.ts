@@ -18,7 +18,8 @@ const useStore = create(
       itemsInCart: 0,
       cartItems: [],
       cartTotalPrice: 0,
-      resetCart: () => set({ itemsInCart: 0, cartItems: [] }),
+      resetCart: () =>
+        set({ itemsInCart: 0, cartItems: [], cartTotalPrice: 0 }),
       addToCart: (item) =>
         set(() => {
           const existingItem = get().cartItems.find(

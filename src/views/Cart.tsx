@@ -1,6 +1,7 @@
 import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import DeleteIcon from '@mui/icons-material/Delete'
+import { useNavigate } from 'react-router-dom'
 
 import useStore from '../store'
 
@@ -9,9 +10,8 @@ interface CartProps {
 }
 
 const Cart = ({ onClose }: CartProps) => {
-  const { cartItems, resetCart, removeFromCart } = useStore()
-
-  console.log('cartItems', cartItems)
+  const { cartItems, resetCart, removeFromCart, cartTotalPrice } = useStore()
+  const navigate = useNavigate()
 
   return (
     <Box height={'100vh'} p={2} width={400}>
@@ -67,11 +67,25 @@ const Cart = ({ onClose }: CartProps) => {
             </Stack>
           ))}
         </Stack>
-        <Stack direction={'row'} justifyContent={'space-between'}>
-          <Button onClick={resetCart} variant={'outlined'}>
-            Empty Cart
-          </Button>
-          <Button variant={'contained'}>Checkout</Button>
+        <Stack>
+          <Stack direction={'row'} justifyContent={'space-between'} my={2}>
+            <Typography variant='caption'>Total:</Typography>
+            <Typography variant='caption'>{cartTotalPrice} EUR</Typography>
+          </Stack>
+          <Stack direction={'row'} justifyContent={'space-between'}>
+            <Button onClick={resetCart} variant={'outlined'}>
+              Empty Cart
+            </Button>
+            <Button
+              onClick={() => {
+                navigate('/checkout')
+                onClose()
+              }}
+              variant={'contained'}
+            >
+              Checkout
+            </Button>
+          </Stack>
         </Stack>
       </Stack>
     </Box>

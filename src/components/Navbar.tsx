@@ -1,12 +1,21 @@
 import { Fragment, useState } from 'react'
-import { Badge, Drawer, IconButton, Stack, Typography } from '@mui/material'
+import {
+  Badge,
+  Drawer,
+  IconButton,
+  Stack,
+  Typography,
+  Box,
+} from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
 import useStore from '../store'
 import Cart from '../views/Cart'
+import { useNavigate } from 'react-router'
 
 const Navbar = () => {
   const { itemsInCart } = useStore()
+  const navigate = useNavigate()
   const [isCartOpen, setCartOpen] = useState(false)
 
   return (
@@ -18,7 +27,9 @@ const Navbar = () => {
         justifyContent={'space-between'}
         p={2}
       >
-        <Typography>Seed and Spore Store</Typography>
+        <Box onClick={() => navigate('/')} sx={{ cursor: 'pointer' }}>
+          <Typography>Seed and Spore Store</Typography>
+        </Box>
         <IconButton onClick={() => setCartOpen(true)}>
           <Badge badgeContent={itemsInCart}>
             <ShoppingCartIcon />

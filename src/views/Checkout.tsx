@@ -17,37 +17,36 @@ const Checkout = () => {
   const [clientSecret, setClientSecret] = useState('')
 
   useEffect(() => {
-    console.log('why is this running twice??')
-    // const createOrder = async () => {
-    //   try {
-    //     const { data } = await api.post('/orders', {
-    //       status: 'processing',
-    //       products: cartItems,
-    //       totalPrice: cartTotalPrice,
-    //     })
-    //     console.log(data)
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-    // const createPaymentIntent = async () => {
-    //   try {
-    //     const { data } = await api.post('/payment', {
-    //       totalPrice: cartTotalPrice,
-    //       orderId: 'test-order-id',
-    //     })
-    //     if (data) {
-    //       setClientSecret(data.clientSecret)
-    //     } else {
-    //       throw new Error()
-    //     }
-    //   } catch (error) {
-    //     console.log(error)
-    //   }
-    // }
-    // createPaymentIntent()
-    // createOrder()
-  }, [])
+    const createOrder = async () => {
+      try {
+        const { data } = await api.post('/orders', {
+          status: 'processing',
+          products: cartItems,
+          totalPrice: cartTotalPrice,
+        })
+        console.log(data)
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    const createPaymentIntent = async () => {
+      try {
+        const { data } = await api.post('/payment', {
+          totalPrice: cartTotalPrice,
+          orderId: 'test-order-id',
+        })
+        if (data) {
+          setClientSecret(data.clientSecret)
+        } else {
+          throw new Error()
+        }
+      } catch (error) {
+        console.log(error)
+      }
+    }
+    createPaymentIntent()
+    createOrder()
+  }, [cartItems, cartTotalPrice])
 
   const options = {
     clientSecret,

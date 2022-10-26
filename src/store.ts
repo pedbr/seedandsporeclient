@@ -2,14 +2,17 @@ import create from 'zustand'
 import { persist } from 'zustand/middleware'
 
 import { CartItem } from './types/cartItem'
+import { OrderType } from './types/orders'
 
 interface Store {
   itemsInCart: number
   cartItems: CartItem[]
   cartTotalPrice: number
+  currentOrder: OrderType | null
   resetCart: () => void
   addToCart: (item: CartItem) => void
   removeFromCart: (item: CartItem) => void
+  setCurrentOrder: (order: OrderType) => void
 }
 
 const useStore = create(
@@ -18,6 +21,7 @@ const useStore = create(
       itemsInCart: 0,
       cartItems: [],
       cartTotalPrice: 0,
+      currentOrder: null,
       resetCart: () =>
         set({ itemsInCart: 0, cartItems: [], cartTotalPrice: 0 }),
       addToCart: (item) =>
@@ -52,6 +56,7 @@ const useStore = create(
           itemsInCart: get().itemsInCart - item.quantity,
           cartTotalPrice: get().cartTotalPrice - item.price * item.quantity,
         }),
+      setCurrentOrder: (order) => set({ currentOrder: order }),
     }),
     {
       name: 'seed-spore',

@@ -2,16 +2,47 @@ import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import DeleteIcon from '@mui/icons-material/Delete'
 import { useNavigate } from 'react-router-dom'
+import { useSnackbar } from 'notistack'
 
 import useStore from '../store'
+import { api } from '../api'
 
 interface CartProps {
   onClose: () => void
 }
 
 const Cart = ({ onClose }: CartProps) => {
-  const { cartItems, resetCart, removeFromCart, cartTotalPrice } = useStore()
+  const {
+    cartItems,
+    resetCart,
+    removeFromCart,
+    cartTotalPrice,
+    setCurrentOrder,
+  } = useStore()
   const navigate = useNavigate()
+  const { enqueueSnackbar } = useSnackbar()
+
+  const handleCheckout = async () => {
+    try {
+      const { data } = await api.post('/orders', {
+        status: 'processing',
+        products: cartItems,
+        totalPrice: cartTotalPrice,
+      })
+      if (data?.data) {
+        setCurrentOrder(data.data)
+        navigate('/checkout')
+        onClose()
+      } else {
+        throw new Error()
+      }
+    } catch (error) {
+      enqueueSnackbar('There was an error creating your order', {
+        variant: 'error',
+      })
+      console.log(error)
+    }
+  }
 
   return (
     <Box height={'100vh'} p={2} width={400}>
@@ -76,13 +107,7 @@ const Cart = ({ onClose }: CartProps) => {
             <Button onClick={resetCart} variant={'outlined'}>
               Empty Cart
             </Button>
-            <Button
-              onClick={() => {
-                navigate('/checkout')
-                onClose()
-              }}
-              variant={'contained'}
-            >
+            <Button onClick={handleCheckout} variant={'contained'}>
               Checkout
             </Button>
           </Stack>

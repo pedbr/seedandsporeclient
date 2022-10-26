@@ -13,27 +13,18 @@ const stripePromise = loadStripe(
 )
 
 const Checkout = () => {
-  const { cartTotalPrice, cartItems } = useStore()
+  const { cartTotalPrice, cartItems, currentOrder } = useStore()
   const [clientSecret, setClientSecret] = useState('')
 
   useEffect(() => {
-    const createOrder = async () => {
-      try {
-        const { data } = await api.post('/orders', {
-          status: 'processing',
-          products: cartItems,
-          totalPrice: cartTotalPrice,
-        })
-        console.log(data)
-      } catch (error) {
-        console.log(error)
-      }
-    }
     const createPaymentIntent = async () => {
+      if (!currentOrder) {
+        return null
+      }
       try {
         const { data } = await api.post('/payment', {
           totalPrice: cartTotalPrice,
-          orderId: 'test-order-id',
+          orderId: currentOrder.id,
         })
         if (data) {
           setClientSecret(data.clientSecret)
@@ -45,8 +36,7 @@ const Checkout = () => {
       }
     }
     createPaymentIntent()
-    createOrder()
-  }, [cartItems, cartTotalPrice])
+  }, [cartItems, cartTotalPrice, currentOrder])
 
   const options = {
     clientSecret,

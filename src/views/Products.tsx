@@ -5,7 +5,10 @@ import useFetchData from '../hooks/useFetchData'
 import { ProductType } from '../types/products'
 
 const Products = () => {
-  const { data, isFetching, error } = useFetchData('products', '/products')
+  const { data, isFetching, error } = useFetchData<ProductType>(
+    'products',
+    '/products'
+  )
 
   if (isFetching) return <Box>{'Loading...'}</Box>
 
@@ -13,7 +16,7 @@ const Products = () => {
 
   return (
     <Stack direction={'row'} spacing={2}>
-      {data?.map((product: ProductType) => (
+      {data?.map((product) => (
         <ProductCard
           key={product.id}
           id={product.id}

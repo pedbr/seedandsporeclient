@@ -24,6 +24,7 @@ const Products = () => {
           description={product.description}
           price={product.price}
           imageUrl={product.imageUrl}
+          weight={product.weight}
         />
       ))}
     </Stack>

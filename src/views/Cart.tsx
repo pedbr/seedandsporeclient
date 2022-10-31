@@ -6,6 +6,7 @@ import { useSnackbar } from 'notistack'
 
 import useStore from '../store'
 import { api } from '../api'
+import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 
 interface CartProps {
   onClose: () => void
@@ -25,7 +26,6 @@ const Cart = ({ onClose }: CartProps) => {
   const handleCheckout = async () => {
     try {
       const { data } = await api.post('/orders', {
-        status: 'processing',
         products: cartItems,
         totalPrice: cartTotalPrice,
       })
@@ -80,7 +80,7 @@ const Cart = ({ onClose }: CartProps) => {
                     borderRadius: 8,
                     objectFit: 'cover',
                   }}
-                  src={item.imageUrl}
+                  src={item.imageUrl || PRODUCT_DEFAULT_IMAGE}
                 />
                 <Stack>
                   <Typography variant={'body1'}>{item.name}</Typography>

@@ -14,7 +14,7 @@ const SuccessfulPurchase = () => {
   const paymentStatus = searchParams.get('redirect_status')
 
   const mutation = useMutation((order: OrderType) => {
-    return api.patch(`/orders/${order.id}`, { ...order, status: 'pending' })
+    return api.post(`/orders/confirm/${order.id}`)
   })
 
   useEffect(() => {

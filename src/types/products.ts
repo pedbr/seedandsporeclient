@@ -9,4 +9,5 @@ export interface ProductType {
   available: boolean
   categoryId?: number
   campaignId?: number
+  weight: number
 }

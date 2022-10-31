@@ -5,4 +5,5 @@ export interface CartItem {
   imageUrl: string
   description: string
   quantity: number
+  weight: number
 }

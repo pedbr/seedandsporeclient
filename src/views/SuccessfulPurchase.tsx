@@ -9,18 +9,47 @@ import { OrderType } from '../types/orders'
 
 const SuccessfulPurchase = () => {
   const [searchParams] = useSearchParams()
-  const { currentOrder } = useStore()
+  const {
+    currentOrder,
+    resetCart,
+
+    orderFullName,
+    orderEmail,
+    orderPhoneNumber,
+    orderDeliveryAddress,
+    orderDeliveryPostCode,
+    orderDeliveryLocation,
+    orderBillingAddress,
+  } = useStore()
 
   const paymentStatus = searchParams.get('redirect_status')
 
-  const mutation = useMutation((order: OrderType) => {
-    return api.post(`/orders/confirm/${order.id}`)
+  const mutation = useMutation(() => {
+    return api.patch(`/orders/userInfo/${currentOrder?.id || ''}`, {
+      orderFullName,
+      orderEmail,
+      orderPhoneNumber,
+      orderDeliveryAddress,
+      orderDeliveryPostCode,
+      orderDeliveryLocation,
+      orderBillingAddress,
+    })
+  })
+
+  const confirmationMutation = useMutation((order: OrderType) => {
+    return api.post(`/orders/confirm/${order.id}`, { orderEmail })
   })
 
   useEffect(() => {
     const updateOrder = async () => {
       if (!currentOrder || paymentStatus !== 'succeeded') return null
-      await mutation.mutate(currentOrder)
+      try {
+        await mutation.mutateAsync()
+        await confirmationMutation.mutateAsync(currentOrder)
+        resetCart()
+      } catch (error) {
+        console.error(error)
+      }
     }
     updateOrder()
     // eslint-disable-next-line react-hooks/exhaustive-deps

@@ -1,3 +1,6 @@
+export const LIGHT_THEME = 'light'
+export const DARK_THEME = 'dark'
+
 export const PRODUCT_DEFAULT_IMAGE =
   'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/products%2Fproduct-default-image.jpg?alt=media&token=6911edd8-fe5e-4a8a-b9a3-84ce9c7a9bc8'
 

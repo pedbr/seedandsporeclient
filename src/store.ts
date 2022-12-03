@@ -4,7 +4,11 @@ import { persist } from 'zustand/middleware'
 import { CartItem } from './types/cartItem'
 import { OrderType } from './types/orders'
 
+type Theme = 'light' | 'dark'
+
 interface Store {
+  theme: Theme
+  setTheme: (newTheme: Theme) => void
   itemsInCart: number
   cartItems: CartItem[]
   cartTotalPrice: number
@@ -32,6 +36,7 @@ interface Store {
 const useStore = create(
   persist<Store>(
     (set, get) => ({
+      theme: 'light',
       itemsInCart: 0,
       cartItems: [],
       cartTotalPrice: 0,
@@ -43,6 +48,7 @@ const useStore = create(
       orderDeliveryPostCode: null,
       orderDeliveryLocation: null,
       orderBillingAddress: null,
+      setTheme: (newTheme) => set({ theme: newTheme }),
       resetCart: () =>
         set({ itemsInCart: 0, cartItems: [], cartTotalPrice: 0 }),
       addToCart: (item) =>

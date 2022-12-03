@@ -14,6 +14,11 @@ const typography = {
     fontSize: 32,
     fontWeight: 900,
   },
+  h4: {
+    fontFamily: 'Be Vietnam Pro',
+    fontSize: 20,
+    fontWeight: 500,
+  },
   subtitle1: {
     fontFamily: 'Oswald',
     fontSize: 20,

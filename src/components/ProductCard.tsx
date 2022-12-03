@@ -1,6 +1,7 @@
 import {
   Button,
   Card,
+  CardActionArea,
   CardActions,
   CardContent,
   CardMedia,
@@ -29,25 +30,22 @@ const ProductCard = ({
   const { addToCart } = useStore()
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardMedia
-        component='img'
-        height='140'
-        image={imageUrl || PRODUCT_DEFAULT_IMAGE}
-        alt='product'
-      />
-      <CardContent>
-        <Typography gutterBottom variant='h5' component='div'>
-          {name}
-        </Typography>
-        <Typography variant='body2' color='text.secondary'>
-          {description}
-        </Typography>
-        <Typography variant='body2' color='text.secondary'>
-          {`${price} EUR`}
-        </Typography>
-      </CardContent>
-      <CardActions>
+    <Card sx={{ maxWidth: 400 }} elevation={0} onClick={() => null}>
+      <CardActionArea>
+        <CardMedia
+          component='img'
+          height='450'
+          image={imageUrl || PRODUCT_DEFAULT_IMAGE}
+          alt='product'
+        />
+        <CardContent>
+          <Typography gutterBottom variant='h4' component='div'>
+            {name}
+          </Typography>
+          {/* <Typography variant='body2'>{description}</Typography> */}
+          <Typography variant='body2'>{`${price} EUR`}</Typography>
+        </CardContent>
+        {/* <CardActions>
         <Button
           onClick={() =>
             addToCart({
@@ -65,7 +63,8 @@ const ProductCard = ({
           Add to cart
         </Button>
         <Button size='small'>Learn More</Button>
-      </CardActions>
+      </CardActions> */}
+      </CardActionArea>
     </Card>
   )
 }

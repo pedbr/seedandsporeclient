@@ -2,11 +2,13 @@ import { Box, Grid, IconButton, Stack, Typography } from '@mui/material'
 import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
 import FacebookIcon from '@mui/icons-material/Facebook'
 import InstagramIcon from '@mui/icons-material/Instagram'
+import { useNavigate } from 'react-router'
 
 import Button from '../components/Button'
 import ImageTextCircle from '../components/ImageTextCircle'
 
 const Homepage = () => {
+  const navigate = useNavigate()
   return (
     <Stack>
       <Box
@@ -36,7 +38,7 @@ const Homepage = () => {
           <Typography color={'common.white'} mb={2} variant='h1'>
             NOURISHING OUR LOCAL COMMUNITY
           </Typography>
-          <Button label={'SHOP NOW'} />
+          <Button label={'SHOP NOW'} onClick={() => navigate('store')} />
         </Box>
       </Box>
       <Box

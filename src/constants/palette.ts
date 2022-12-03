@@ -1,8 +1,8 @@
 // Setup Colors
 const PRIMARY = {
   dark: '#171738',
-  light: '#F4F5FE',
-  main: '#171738',
+  light: '#FFFFFF',
+  main: '#000000',
 }
 
 const INFO = {

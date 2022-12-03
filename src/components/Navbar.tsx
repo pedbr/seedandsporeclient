@@ -24,7 +24,7 @@ const Navbar = () => {
   const location = useLocation()
   const [isCartOpen, setCartOpen] = useState(false)
 
-  console.log(location)
+  const inStore = location.pathname === '/store'
 
   return (
     <Fragment>
@@ -37,6 +37,7 @@ const Navbar = () => {
         position={'absolute'}
         left={0}
         right={0}
+        bgcolor={inStore ? 'common.black' : 'none'}
       >
         <Box
           color={'common.white'}
@@ -51,8 +52,8 @@ const Navbar = () => {
           </Typography>
         </Box>
         <Box alignItems={'center'} color={'common.white'} display={'flex'}>
-          {location.pathname === '/store' ? (
-            <IconButton onClick={() => setCartOpen(true)}>
+          {inStore ? (
+            <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
               <Badge badgeContent={itemsInCart}>
                 <ShoppingCartIcon />
               </Badge>
@@ -68,7 +69,7 @@ const Navbar = () => {
               <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
                 <FacebookIcon color={'inherit'} />
               </IconButton>
-              <Button label={'SHOP'} />
+              <Button label={'SHOP'} onClick={() => navigate('store')} />
             </>
           )}
         </Box>

@@ -1,4 +1,4 @@
-import { Box, Stack } from '@mui/material'
+import { Box, Grid } from '@mui/material'
 
 import ProductCard from '../components/ProductCard'
 import useFetchData from '../hooks/useFetchData'
@@ -15,19 +15,20 @@ const Products = () => {
   if (error) return <Box>{'An error ocurred...'}</Box>
 
   return (
-    <Stack direction={'row'} spacing={2}>
+    <Grid container pt={'92px'} px={14}>
       {data?.map((product) => (
-        <ProductCard
-          key={product.id}
-          id={product.id}
-          name={product.name}
-          description={product.description}
-          price={product.price}
-          imageUrl={product.imageUrl}
-          weight={product.weight}
-        />
+        <Grid item xs={4} p={4} key={product.id}>
+          <ProductCard
+            id={product.id}
+            name={product.name}
+            description={product.description}
+            price={product.price}
+            imageUrl={product.imageUrl}
+            weight={product.weight}
+          />
+        </Grid>
       ))}
-    </Stack>
+    </Grid>
   )
 }
 

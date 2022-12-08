@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import UserInfoElement from './UserInfoElement'
+import { Box, Button, Typography } from '@mui/material'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
@@ -43,14 +43,23 @@ export default function CheckoutForm() {
   }
 
   return (
-    <form id='payment-form' onSubmit={handleSubmit}>
-      <UserInfoElement />
-      <PaymentElement id='payment-element' />
-      <button disabled={isLoading || !stripe || !elements} id='submit'>
-        <span id='button-text'>Pay now</span>
-      </button>
-      {/* Show any error or success messages */}
-      {message && <div id='payment-message'>{message}</div>}
-    </form>
+    <Box px={4}>
+      <form id='payment-form' onSubmit={handleSubmit}>
+        <PaymentElement id='payment-element' />
+        <Box display={'flex'} justifyContent={'center'} py={3}>
+          <Button
+            variant={'contained'}
+            disabled={isLoading || !stripe || !elements}
+            id='submit'
+            type='submit'
+          >
+            <span id='button-text'>Pay now</span>
+          </Button>
+        </Box>
+
+        {/* Show any error or success messages */}
+        {message && <Typography id='payment-message'>{message}</Typography>}
+      </form>
+    </Box>
   )
 }

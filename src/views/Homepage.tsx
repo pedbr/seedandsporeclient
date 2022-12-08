@@ -79,7 +79,7 @@ const Homepage = () => {
         width={'100vw'}
       >
         <Grid container px={12} spacing={10}>
-          <Grid item xs={5}>
+          <Grid item xs={5} display={'flex'} justifyContent={'flex-end'}>
             <Box
               width={'450px'}
               height={'400px'}

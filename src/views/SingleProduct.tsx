@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import {
   Box,
   Button,
@@ -10,11 +11,13 @@ import {
   Stack,
   Typography,
 } from '@mui/material'
-import { useState } from 'react'
-import { useParams } from 'react-router'
+import { useNavigate, useParams } from 'react-router'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+
 import useFetchById from '../hooks/useFetchById'
 import useStore from '../store'
 import { ProductType } from '../types/products'
+import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 
 // {
 //   "weight": "250",
@@ -30,6 +33,7 @@ import { ProductType } from '../types/products'
 const SingleProduct = () => {
   const { productId } = useParams()
   const { addToCart } = useStore()
+  const navigate = useNavigate()
   const [quantity, setQuantity] = useState('1')
   const {
     data,
@@ -41,9 +45,24 @@ const SingleProduct = () => {
     productId || ''
   )
 
-  if (isLoading) return <Box>Loading...</Box>
-  if (errorFetching) return <Box>An error ocurred please try again</Box>
-  if (!data) return <Box>An error ocurred please try again</Box>
+  if (isLoading)
+    return (
+      <Box pt={'100px'} px={14} minHeight={'90vh'}>
+        Loading...
+      </Box>
+    )
+  if (errorFetching)
+    return (
+      <Box pt={'100px'} px={14} minHeight={'90vh'}>
+        An error ocurred please try again
+      </Box>
+    )
+  if (!data)
+    return (
+      <Box pt={'100px'} px={14} minHeight={'90vh'}>
+        An error ocurred please try again
+      </Box>
+    )
 
   const { name, weight, description, price, id, imageUrl } = data
 
@@ -54,12 +73,22 @@ const SingleProduct = () => {
   return (
     <Box pt={'100px'} px={14} minHeight={'90vh'}>
       <Grid container spacing={2}>
+        <Grid item xs={12}>
+          <Button
+            variant={'outlined'}
+            size={'small'}
+            onClick={() => navigate('/store')}
+          >
+            <ArrowBackIcon sx={{ marginRight: 1 }} />
+            Back to store
+          </Button>
+        </Grid>
         <Grid item xs={6} display={'flex'} justifyContent={'flex-end'}>
           <Box
             height={'400px'}
             width={'400px'}
             sx={{
-              backgroundImage: `url(${data?.imageUrl})`,
+              backgroundImage: `url(${imageUrl || PRODUCT_DEFAULT_IMAGE})`,
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',

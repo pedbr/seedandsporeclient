@@ -11,7 +11,7 @@ const Footer = () => {
       justifyContent={'space-between'}
       bgcolor={'common.black'}
       height={'200px'}
-      width={'100vw'}
+      px={14}
     >
       <Box color={'common.white'} display={'flex'} alignItems={'center'}>
         <RadioButtonCheckedIcon color={'inherit'} />

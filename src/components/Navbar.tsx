@@ -24,7 +24,7 @@ const Navbar = () => {
   const location = useLocation()
   const [isCartOpen, setCartOpen] = useState(false)
 
-  const inStore = location.pathname.includes('/store')
+  const inHomepage = location.pathname === '/'
 
   return (
     <Fragment>
@@ -37,7 +37,7 @@ const Navbar = () => {
         position={'absolute'}
         left={0}
         right={0}
-        bgcolor={inStore ? 'common.black' : 'none'}
+        bgcolor={!inHomepage ? 'common.black' : 'none'}
       >
         <Box
           color={'common.white'}
@@ -52,7 +52,7 @@ const Navbar = () => {
           </Typography>
         </Box>
         <Box alignItems={'center'} color={'common.white'} display={'flex'}>
-          {inStore ? (
+          {!inHomepage ? (
             <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
               <Badge badgeContent={itemsInCart}>
                 <ShoppingCartIcon />

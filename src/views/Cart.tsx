@@ -45,7 +45,7 @@ const Cart = ({ onClose }: CartProps) => {
   }
 
   return (
-    <Box height={'100vh'} p={2} width={400}>
+    <Box height={'100vh'} p={2} width={400} bgcolor={'ghostwhite'}>
       <Stack
         alignItems={'center'}
         direction={'row'}
@@ -66,26 +66,29 @@ const Cart = ({ onClose }: CartProps) => {
               key={item.id}
               p={2}
               spacing={2}
-              sx={{
-                border: '1px solid black',
-                borderRadius: 4,
-              }}
+              bgcolor={'white'}
             >
               <Stack direction={'row'} spacing={2}>
-                <img
-                  alt={'product'}
-                  style={{
-                    height: 64,
-                    width: 64,
-                    borderRadius: 8,
-                    objectFit: 'cover',
+                <Box
+                  height={'64px'}
+                  width={'64px'}
+                  minWidth={'64px'}
+                  minHeight={'64px'}
+                  sx={{
+                    backgroundImage: `url(${
+                      item.imageUrl || PRODUCT_DEFAULT_IMAGE
+                    })`,
+                    backgroundPosition: 'center',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundSize: 'cover',
                   }}
-                  src={item.imageUrl || PRODUCT_DEFAULT_IMAGE}
                 />
                 <Stack>
                   <Typography variant={'body1'}>{item.name}</Typography>
-                  <Typography variant={'body2'}>{item.description}</Typography>
                   <Typography variant={'caption'}>
+                    {item.description}
+                  </Typography>
+                  <Typography variant={'body2'}>
                     Quantity: {item.quantity}
                   </Typography>
                 </Stack>
@@ -100,8 +103,8 @@ const Cart = ({ onClose }: CartProps) => {
         </Stack>
         <Stack>
           <Stack direction={'row'} justifyContent={'space-between'} my={2}>
-            <Typography variant='caption'>Total:</Typography>
-            <Typography variant='caption'>{cartTotalPrice} EUR</Typography>
+            <Typography variant='body2'>Total:</Typography>
+            <Typography variant='body2'>{cartTotalPrice} EUR</Typography>
           </Stack>
           <Stack direction={'row'} justifyContent={'space-between'}>
             <Button onClick={resetCart} variant={'outlined'}>

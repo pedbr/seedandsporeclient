@@ -1,14 +1,12 @@
 import {
-  Button,
   Card,
   CardActionArea,
-  CardActions,
   CardContent,
   CardMedia,
   Typography,
 } from '@mui/material'
+import { useNavigate } from 'react-router'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
-import useStore from '../store'
 
 interface ProductCardProps {
   id: string
@@ -27,11 +25,11 @@ const ProductCard = ({
   imageUrl,
   weight,
 }: ProductCardProps) => {
-  const { addToCart } = useStore()
+  const navigate = useNavigate()
 
   return (
     <Card sx={{ maxWidth: 400 }} elevation={0} onClick={() => null}>
-      <CardActionArea>
+      <CardActionArea onClick={() => navigate(`/store/product/${id}`)}>
         <CardMedia
           component='img'
           height='450'
@@ -42,28 +40,8 @@ const ProductCard = ({
           <Typography gutterBottom variant='h4' component='div'>
             {name}
           </Typography>
-          {/* <Typography variant='body2'>{description}</Typography> */}
           <Typography variant='body2'>{`${price} EUR`}</Typography>
         </CardContent>
-        {/* <CardActions>
-        <Button
-          onClick={() =>
-            addToCart({
-              id,
-              name,
-              description,
-              price,
-              imageUrl,
-              quantity: 1,
-              weight,
-            })
-          }
-          size='small'
-        >
-          Add to cart
-        </Button>
-        <Button size='small'>Learn More</Button>
-      </CardActions> */}
       </CardActionArea>
     </Card>
   )

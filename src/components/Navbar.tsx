@@ -24,7 +24,7 @@ const Navbar = () => {
   const location = useLocation()
   const [isCartOpen, setCartOpen] = useState(false)
 
-  const inStore = location.pathname === '/store'
+  const inStore = location.pathname.includes('/store')
 
   return (
     <Fragment>

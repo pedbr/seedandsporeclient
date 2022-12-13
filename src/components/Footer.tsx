@@ -1,7 +1,6 @@
 import { Box, IconButton, Typography } from '@mui/material'
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
+
+import { ICONS, LOGOS } from '../constants'
 
 const Footer = () => {
   return (
@@ -9,22 +8,58 @@ const Footer = () => {
       alignItems={'center'}
       display={'flex'}
       justifyContent={'space-between'}
-      bgcolor={'common.black'}
+      bgcolor={'branding.soil'}
       height={'200px'}
       px={14}
     >
       <Box color={'common.white'} display={'flex'} alignItems={'center'}>
-        <RadioButtonCheckedIcon color={'inherit'} />
-        <Typography color={'common.white'} ml={1} variant={'subtitle1'}>
+        <Box
+          alignItems={'center'}
+          display={'flex'}
+          justifyContent={'center'}
+          height={'64px'}
+          width={'64px'}
+          sx={{
+            backgroundImage: `url(${LOGOS.stamp.mushroomFilled})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
+          }}
+        />
+        <Typography color={'branding.mushroom'} ml={1} variant={'subtitle1'}>
           SEED AND SPORE
         </Typography>
       </Box>
       <Box color={'common.white'}>
         <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
-          <InstagramIcon color={'inherit'} />
+          <Box
+            alignItems={'center'}
+            display={'flex'}
+            justifyContent={'center'}
+            height={'32px'}
+            width={'32px'}
+            sx={{
+              backgroundImage: `url(${ICONS.mushroom.instagram})`,
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          />
         </IconButton>
         <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
-          <FacebookIcon color={'inherit'} />
+          <Box
+            alignItems={'center'}
+            display={'flex'}
+            justifyContent={'center'}
+            height={'32px'}
+            width={'32px'}
+            sx={{
+              backgroundImage: `url(${ICONS.mushroom.facebook})`,
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          />
         </IconButton>
       </Box>
     </Box>

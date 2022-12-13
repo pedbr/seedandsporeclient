@@ -4,16 +4,22 @@ interface ButtonProps {
   label: string
   onClick?: () => void
   color?: 'white' | 'black'
+  customColor?: string
 }
 
-const Button = ({ label, onClick, color = 'white' }: ButtonProps) => {
+const Button = ({
+  label,
+  onClick,
+  color = 'white',
+  customColor,
+}: ButtonProps) => {
   const isWhiteButton = color === 'white'
   return (
     <Box color={`common.${color}`}>
       <MUIButton
         sx={{
           height: '50px',
-          backgroundColor: `common.${color}`,
+          backgroundColor: customColor || `common.${color}`,
           borderRadius: 0,
           '&:hover': {
             backgroundColor: !isWhiteButton ? 'DimGray' : 'GhostWhite',

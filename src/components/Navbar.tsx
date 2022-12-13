@@ -6,17 +6,14 @@ import {
   Stack,
   Typography,
   Box,
-  Button as MuiButton,
+  Tooltip,
 } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
-import RadioButtonCheckedIcon from '@mui/icons-material/RadioButtonChecked'
-import FacebookIcon from '@mui/icons-material/Facebook'
-import InstagramIcon from '@mui/icons-material/Instagram'
 
 import useStore from '../store'
 import Cart from '../views/Cart'
 import { useLocation, useNavigate } from 'react-router'
-import Button from './Button'
+import { ICONS, LOGOS } from '../constants'
 
 const Navbar = () => {
   const { itemsInCart } = useStore()
@@ -37,7 +34,7 @@ const Navbar = () => {
         position={'absolute'}
         left={0}
         right={0}
-        bgcolor={!inHomepage ? 'common.black' : 'none'}
+        bgcolor={!inHomepage ? 'branding.pomegranate' : 'none'}
       >
         <Box
           color={'common.white'}
@@ -46,12 +43,31 @@ const Navbar = () => {
           onClick={() => navigate('/')}
           sx={{ cursor: 'pointer' }}
         >
-          <RadioButtonCheckedIcon color={'inherit'} />
-          <Typography color={'common.white'} ml={1} variant={'subtitle1'}>
+          <Box
+            alignItems={'center'}
+            display={'flex'}
+            justifyContent={'center'}
+            height={'56px'}
+            width={'56px'}
+            sx={{
+              backgroundImage: `url(${
+                inHomepage ? LOGOS.stamp.soilFilled : LOGOS.stamp.mushroomFilled
+              })`,
+              backgroundPosition: 'center',
+              backgroundRepeat: 'no-repeat',
+              backgroundSize: 'cover',
+            }}
+          />
+          <Typography
+            color={`branding.${inHomepage ? 'soil' : 'mushroom'}`}
+            ml={1}
+            variant={'subtitle1'}
+            fontSize={28}
+          >
             SEED AND SPORE
           </Typography>
         </Box>
-        <Box alignItems={'center'} color={'common.white'} display={'flex'}>
+        <Box alignItems={'center'} color={'branding.mushroom'} display={'flex'}>
           {!inHomepage ? (
             <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
               <Badge badgeContent={itemsInCart}>
@@ -60,16 +76,44 @@ const Navbar = () => {
             </IconButton>
           ) : (
             <>
-              <Box color={'common.white'} mr={2}>
-                <MuiButton color={'inherit'}>CONTACT</MuiButton>
-              </Box>
-              <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
-                <InstagramIcon color={'inherit'} />
-              </IconButton>
-              <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
-                <FacebookIcon color={'inherit'} />
-              </IconButton>
-              <Button label={'SHOP'} onClick={() => navigate('store')} />
+              <Tooltip title='Reach out to us!'>
+                <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
+                  <Box
+                    alignItems={'center'}
+                    display={'flex'}
+                    justifyContent={'center'}
+                    height={'40px'}
+                    width={'40px'}
+                    sx={{
+                      backgroundImage: `url(${ICONS.mushroom.contact})`,
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
+              <Tooltip title='Visit our shop'>
+                <IconButton
+                  color={'inherit'}
+                  sx={{ marginRight: 2 }}
+                  onClick={() => navigate('store')}
+                >
+                  <Box
+                    alignItems={'center'}
+                    display={'flex'}
+                    justifyContent={'center'}
+                    height={'40px'}
+                    width={'40px'}
+                    sx={{
+                      backgroundImage: `url(${ICONS.mushroom.cart})`,
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                    }}
+                  />
+                </IconButton>
+              </Tooltip>
             </>
           )}
         </Box>

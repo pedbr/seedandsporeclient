@@ -1,4 +1,13 @@
 // Setup Colors
+const BRANDING = {
+  mushroom: '#FFF3DF',
+  soil: '#5D3438',
+  pomegranate: '#932F34',
+  dryLeaf: '#EC5E36',
+  sunlight: '#FBB031',
+  forest: '#075446',
+}
+
 const PRIMARY = {
   dark: '#171738',
   light: '#FFFFFF',
@@ -42,6 +51,7 @@ const GREY = {
 const Palette = {
   // LIGHT
   light: {
+    branding: BRANDING,
     primary: {
       light: PRIMARY.light,
       dark: PRIMARY.dark,
@@ -84,6 +94,7 @@ const Palette = {
 
   // DARK
   dark: {
+    branding: BRANDING,
     primary: {
       light: PRIMARY.dark,
       dark: PRIMARY.light,

@@ -1,12 +1,13 @@
-import { Box, Grid, Stack, Typography } from '@mui/material'
+import { alpha, Box, Grid, Stack, Typography, useTheme } from '@mui/material'
 
 import { useNavigate } from 'react-router'
 
 import Button from '../components/Button'
-import ImageTextCircle from '../components/ImageTextCircle'
+import { IMAGES } from '../constants'
 
 const Homepage = () => {
   const navigate = useNavigate()
+  const { palette } = useTheme()
   return (
     <Stack>
       <Box
@@ -16,8 +17,7 @@ const Homepage = () => {
         height={'100vh'}
         width={'100vw'}
         sx={{
-          backgroundImage:
-            'url(https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/mushroom-earth.jpg?alt=media&token=9e78851b-533c-43ed-b035-45958c719cca)',
+          backgroundImage: `url(${IMAGES.landingPage})`,
           backgroundPosition: 'center',
           backgroundRepeat: 'no-repeat',
           backgroundSize: 'cover',
@@ -25,7 +25,7 @@ const Homepage = () => {
       >
         <Box
           color={'common.white'}
-          bgcolor={'rgba(0, 0, 0, 0.3)'}
+          bgcolor={alpha(palette.common.black, 0.2)}
           height={'100%'}
           width={'100%'}
           display={'flex'}
@@ -33,13 +33,15 @@ const Homepage = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <Typography color={'common.white'} mb={2} variant='h1'>
+          <Typography color={'branding.mushroom'} mb={2} variant='h1'>
             NOURISHING OUR LOCAL COMMUNITY
           </Typography>
-          <Button label={'SHOP NOW'} onClick={() => navigate('store')} />
+          <Typography color={'branding.mushroom'} variant='h4' fontWeight={500}>
+            - OPORTO URBAN MUSHROOM FARM -
+          </Typography>
         </Box>
       </Box>
-      <Box
+      {/* <Box
         alignItems={'center'}
         display={'flex'}
         justifyContent={'center'}
@@ -70,7 +72,7 @@ const Homepage = () => {
             />
           </Grid>
         </Grid>
-      </Box>
+      </Box> */}
       <Box
         alignItems={'center'}
         display={'flex'}
@@ -94,21 +96,48 @@ const Homepage = () => {
           <Grid item xs={7}>
             <Stack>
               <Typography variant={'h2'} mb={2}>
-                LOREM IPSUM DOLOR
+                THE HEARTS BEHIND THIS PROJECT
               </Typography>
               <Typography variant={'body1'} mb={2}>
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-                eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut
-                enim ad minim veniam, quis nostrud exercitation ullamco laboris
-                nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor
-                in reprehenderit in voluptate velit esse cillum dolore eu fugiat
-                nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-                sunt in culpa qui officia deserunt mollit anim id est laborum.
+                We started growing Gourmet Oyster Mushrooms because we wanted to
+                learn how to feed ourselves in a more independent, healthy way
+                and provide tasty local food for our neighborhood. Oyster
+                Mushrooms crossed our path and we were fascinated by their
+                health potential. Additionally, we were able to start growing
+                them in our small vertical space in the garage in Porto. Who are
+                we? Wiebke and Diogo, a Portuguese-German couple with
+                backgrounds in landscaping and aeronautical engineering. In
+                October 2021, we started our first experiences with Mushrooms
+                and from April 2022, we consistently grew them in our self-built
+                fruiting rooms in the garage. Now we are Mushroom farmers and
+                grateful to be able to work every day with such fascinating
+                beings.
               </Typography>
               <Button label={'CONTACT'} color={'black'} />
             </Stack>
           </Grid>
         </Grid>
+      </Box>
+      <Box
+        height={'600px'}
+        width={'100%'}
+        display={'flex'}
+        flexDirection={'column'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        sx={{
+          backgroundImage: `url(${IMAGES.ctaSection})`,
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          backgroundSize: 'cover',
+        }}
+      >
+        <Button
+          label={'KNOW OUR PRODUCTS'}
+          color={'black'}
+          customColor={'branding.pomegranate'}
+          onClick={() => navigate('/store')}
+        />
       </Box>
     </Stack>
   )

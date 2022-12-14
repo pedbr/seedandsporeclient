@@ -7,6 +7,9 @@ import {
   Typography,
   Box,
   Tooltip,
+  Button,
+  Menu,
+  MenuItem,
 } from '@mui/material'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 
@@ -14,12 +17,24 @@ import useStore from '../store'
 import Cart from '../views/Cart'
 import { useLocation, useNavigate } from 'react-router'
 import { ICONS, LOGOS } from '../constants'
+import { useTranslation } from 'react-i18next'
 
 const Navbar = () => {
   const { itemsInCart } = useStore()
   const navigate = useNavigate()
   const location = useLocation()
   const [isCartOpen, setCartOpen] = useState(false)
+  const { i18n } = useTranslation()
+
+  const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
+  const open = Boolean(anchorEl)
+  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+    setAnchorEl(event.currentTarget)
+  }
+  const handleLocaleSelect = (locale: string) => {
+    i18n.changeLanguage(locale)
+    setAnchorEl(null)
+  }
 
   const inHomepage = location.pathname === '/'
 
@@ -68,6 +83,21 @@ const Navbar = () => {
           </Typography>
         </Box>
         <Box alignItems={'center'} color={'branding.mushroom'} display={'flex'}>
+          <Button
+            onClick={handleClick}
+            color={'inherit'}
+            sx={{ marginRight: 2 }}
+          >
+            {i18n.language}
+          </Button>
+          <Menu
+            anchorEl={anchorEl}
+            open={open}
+            onClose={() => setAnchorEl(null)}
+          >
+            <MenuItem onClick={() => handleLocaleSelect('en')}>EN</MenuItem>
+            <MenuItem onClick={() => handleLocaleSelect('pt')}>PT</MenuItem>
+          </Menu>
           {!inHomepage ? (
             <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
               <Badge badgeContent={itemsInCart}>

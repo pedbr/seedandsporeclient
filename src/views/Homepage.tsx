@@ -56,7 +56,7 @@ const Homepage = () => {
               width={'450px'}
               height={'400px'}
               sx={{
-                backgroundImage: `url(${'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/diogo-wiebke.png?alt=media&token=2ae64fa0-9db3-418b-9fa5-8d0939986a95'})`,
+                backgroundImage: `url(${IMAGES.about})`,
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',

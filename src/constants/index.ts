@@ -2,6 +2,8 @@ export const LIGHT_THEME = 'light'
 export const DARK_THEME = 'dark'
 
 export const IMAGES = {
+  about:
+    'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/diogo-wiebke.png?alt=media&token=2ae64fa0-9db3-418b-9fa5-8d0939986a95',
   landingPage:
     'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/homepage-image.JPG?alt=media&token=34487e69-20b7-4cdc-8552-555b6bda3ba8',
   ctaSection:

@@ -2,13 +2,10 @@ import { useState } from 'react'
 import {
   Box,
   Button,
-  FormControl,
+  ButtonGroup,
   Grid,
-  InputLabel,
-  MenuItem,
-  Select,
-  SelectChangeEvent,
   Stack,
+  TextField,
   Typography,
 } from '@mui/material'
 import { useNavigate, useParams } from 'react-router'
@@ -18,23 +15,13 @@ import useFetchById from '../hooks/useFetchById'
 import useStore from '../store'
 import { ProductType } from '../types/products'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
-
-// {
-//   "weight": "250",
-//   "name": "Demo Product",
-//   "description": "This is a very nice product",
-//   "stock": "50",
-//   "price": "20",
-//   "createdAt": "2022-11-02T17:28:37.231Z",
-//   "id": "3UqRS3QrYBVQAQ4WNguZ",
-//   "imageUrl": "https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/products%2Fproduct-70913021066274-14303738991049.jpg?alt=media&token=44e1f6e0-b4f3-4c9c-8992-b8c4fff3e4ca"
-// }
+import { CartItem } from '../types/cartItem'
 
 const SingleProduct = () => {
   const { productId } = useParams()
-  const { addToCart } = useStore()
+  const { addToCart, cartItems } = useStore()
   const navigate = useNavigate()
-  const [quantity, setQuantity] = useState('1')
+  const [quantity, setQuantity] = useState(1)
   const {
     data,
     isLoading,
@@ -64,11 +51,14 @@ const SingleProduct = () => {
       </Box>
     )
 
-  const { name, weight, description, price, id, imageUrl } = data
+  const { name, weight, description, price, id, imageUrl, stock } = data
 
-  const handleChange = (event: SelectChangeEvent) => {
-    setQuantity(event.target.value)
-  }
+  const currentItemInCart = cartItems.find((i: CartItem) => i.id === id)
+
+  const currentlyAvailableStock = stock - (currentItemInCart?.quantity || 0)
+
+  const handleAddQuantity = () => setQuantity(quantity + 1)
+  const handleReduceQuantity = () => setQuantity(quantity - 1)
 
   return (
     <Box pt={'100px'} px={14} minHeight={'90vh'}>
@@ -114,24 +104,37 @@ const SingleProduct = () => {
               <Typography variant={'caption'}>{`${data?.weight}G`}</Typography>
             </Stack>
             <Stack spacing={2} width={'300px'} pt={2}>
-              <FormControl fullWidth>
-                <InputLabel id='demo-simple-select-label'>Quantity</InputLabel>
-                <Select
-                  value={quantity}
-                  label='Quantity'
-                  onChange={handleChange}
-                >
-                  <MenuItem value={'1'}>1</MenuItem>
-                  <MenuItem value={'2'}>2</MenuItem>
-                  <MenuItem value={'3'}>3</MenuItem>
-                  <MenuItem value={'4'}>4</MenuItem>
-                  <MenuItem value={'5'}>5</MenuItem>
-                  <MenuItem value={'6'}>6</MenuItem>
-                </Select>
-              </FormControl>
+              <Box display={'flex'} alignItems={'center'}>
+                <TextField
+                  InputLabelProps={{ shrink: true }}
+                  inputProps={{ readOnly: true }}
+                  label={'Quantity'}
+                  value={String(quantity)}
+                  sx={{
+                    marginRight: 2,
+                  }}
+                />
+                <ButtonGroup variant='contained'>
+                  <Button
+                    onClick={handleReduceQuantity}
+                    disabled={quantity === 0}
+                  >
+                    -
+                  </Button>
+                  <Button
+                    onClick={handleAddQuantity}
+                    disabled={quantity === currentlyAvailableStock}
+                  >
+                    +
+                  </Button>
+                </ButtonGroup>
+              </Box>
+
               <Button
                 variant={'contained'}
-                onClick={() =>
+                disabled={quantity === 0}
+                onClick={() => {
+                  setQuantity(quantity === currentlyAvailableStock ? 0 : 1)
                   addToCart({
                     id,
                     name,
@@ -141,7 +144,7 @@ const SingleProduct = () => {
                     quantity: Number(quantity),
                     weight,
                   })
-                }
+                }}
                 size='small'
               >
                 Add to cart

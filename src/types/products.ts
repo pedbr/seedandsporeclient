@@ -1,11 +1,15 @@
+interface TranslationString {
+  [key: string]: string
+}
+
 export interface ProductType {
   id: string
   createdAt: number
-  name: string
+  name: TranslationString
   stock: number
   price: number
   imageUrl: string
-  description: string
+  description: TranslationString
   available: boolean
   categoryId?: number
   campaignId?: number

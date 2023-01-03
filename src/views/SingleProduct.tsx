@@ -1,4 +1,5 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import {
   Box,
   Button,
@@ -24,6 +25,10 @@ const SingleProduct = () => {
   const { addToCart, cartItems } = useStore()
   const navigate = useNavigate()
   const [quantity, setQuantity] = useState(1)
+  const { i18n } = useTranslation()
+
+  const currentLocale: string = useMemo(() => i18n.language, [i18n.language])
+
   const {
     data,
     isLoading,
@@ -107,7 +112,7 @@ const SingleProduct = () => {
         </Grid>
         <Grid item xs={6}>
           <Stack spacing={2}>
-            <Typography variant={'h2'}>{data?.name}</Typography>
+            <Typography variant={'h2'}>{data?.name[currentLocale]}</Typography>
             <Stack>
               <Typography variant={'button'}>Price</Typography>
               <Typography
@@ -117,7 +122,9 @@ const SingleProduct = () => {
 
             <Stack>
               <Typography variant={'button'}>Description</Typography>
-              <Typography variant={'caption'}>{data?.description}</Typography>
+              <Typography variant={'caption'}>
+                {data?.description[currentLocale]}
+              </Typography>
             </Stack>
             <Stack>
               <Typography variant={'button'}>Weight</Typography>
@@ -157,8 +164,8 @@ const SingleProduct = () => {
                   setQuantity(quantity === currentlyAvailableStock ? 0 : 1)
                   addToCart({
                     id,
-                    name,
-                    description,
+                    name: name[currentLocale],
+                    description: description[currentLocale],
                     price,
                     imageUrl,
                     quantity: Number(quantity),

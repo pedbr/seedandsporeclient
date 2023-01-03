@@ -11,15 +11,21 @@ import { useNavigate } from 'react-router'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import UserInfoElement from '../components/UserInfoElement'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
+import { getShippingCost } from '../utils'
 
 const stripePromise = loadStripe(
   'pk_test_51LttTdCkXFiy2LWeKmzZY48CKBd3AmoFMaB8QvVi2ErysC4LbQ48idsaAFfldri889fYIoPgPS5K8z51iql2jfIE00MIKJbl8q'
 )
 
 const Checkout = () => {
-  const { cartTotalPrice, cartItems, currentOrder } = useStore()
+  const { cartTotalPrice, cartTotalWeight, cartItems, currentOrder } =
+    useStore()
   const [clientSecret, setClientSecret] = useState('')
   const navigate = useNavigate()
+
+  const shippingCost = getShippingCost(cartTotalWeight, cartTotalPrice)
+
+  const totalOrderCost = cartTotalPrice + shippingCost
 
   useEffect(() => {
     const createPaymentIntent = async () => {
@@ -28,7 +34,7 @@ const Checkout = () => {
       }
       try {
         const { data } = await api.post('/payment', {
-          totalPrice: cartTotalPrice,
+          totalPrice: totalOrderCost,
           orderId: currentOrder.id,
         })
         if (data) {
@@ -41,7 +47,7 @@ const Checkout = () => {
       }
     }
     createPaymentIntent()
-  }, [cartItems, cartTotalPrice, currentOrder])
+  }, [cartItems, currentOrder, totalOrderCost])
 
   const options = {
     clientSecret,
@@ -120,10 +126,12 @@ const Checkout = () => {
             ))}
           </Grid>
           <Typography variant={'caption'}>Shipping</Typography>
-          <Typography mb={3}>Total shipping cost: XX EUR</Typography>
+          <Typography mb={3}>
+            Total shipping cost: {shippingCost} EUR
+          </Typography>
           <Box p={2} display={'flex'} justifyContent={'center'}>
             <Typography variant={'h3'}>
-              Total to pay: {cartTotalPrice} EUR
+              Total to pay: {totalOrderCost} EUR
             </Typography>
           </Box>
         </Stack>

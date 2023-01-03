@@ -12,6 +12,7 @@ interface Store {
   itemsInCart: number
   cartItems: CartItem[]
   cartTotalPrice: number
+  cartTotalWeight: number
   currentOrder: OrderType | null
   orderFullName: string | null
   orderEmail: string | null
@@ -40,6 +41,7 @@ const useStore = create(
       itemsInCart: 0,
       cartItems: [],
       cartTotalPrice: 0,
+      cartTotalWeight: 0,
       currentOrder: null,
       orderFullName: null,
       orderEmail: null,
@@ -50,7 +52,12 @@ const useStore = create(
       orderBillingAddress: null,
       setTheme: (newTheme) => set({ theme: newTheme }),
       resetCart: () =>
-        set({ itemsInCart: 0, cartItems: [], cartTotalPrice: 0 }),
+        set({
+          itemsInCart: 0,
+          cartItems: [],
+          cartTotalPrice: 0,
+          cartTotalWeight: 0,
+        }),
       addToCart: (item) =>
         set(() => {
           const existingItem = get().cartItems.find(
@@ -67,12 +74,16 @@ const useStore = create(
               ],
               itemsInCart: get().itemsInCart + item.quantity,
               cartTotalPrice: get().cartTotalPrice + item.price * item.quantity,
+              cartTotalWeight:
+                get().cartTotalWeight + item.weight * item.quantity,
             }
           }
           return {
             cartItems: [...get().cartItems, item],
             itemsInCart: get().itemsInCart + item.quantity,
             cartTotalPrice: get().cartTotalPrice + item.price * item.quantity,
+            cartTotalWeight:
+              get().cartTotalWeight + item.weight * item.quantity,
           }
         }),
       removeFromCart: (item) =>
@@ -82,6 +93,7 @@ const useStore = create(
           ),
           itemsInCart: get().itemsInCart - item.quantity,
           cartTotalPrice: get().cartTotalPrice - item.price * item.quantity,
+          cartTotalWeight: get().cartTotalWeight - item.weight * item.quantity,
         }),
       setCurrentOrder: (order) => set({ currentOrder: order }),
       setOrderFullName: (value) => set({ orderFullName: value }),

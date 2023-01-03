@@ -1,10 +1,12 @@
 import { useState } from 'react'
 import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
 import { Box, Button, Typography } from '@mui/material'
+import useStore from '../store'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
   const elements = useElements()
+  const { cartItems } = useStore()
 
   const [message, setMessage] = useState<string | undefined>()
   const [isLoading, setIsLoading] = useState(false)
@@ -49,7 +51,9 @@ export default function CheckoutForm() {
         <Box display={'flex'} justifyContent={'center'} py={3}>
           <Button
             variant={'contained'}
-            disabled={isLoading || !stripe || !elements}
+            disabled={
+              isLoading || !stripe || !elements || !Boolean(cartItems.length)
+            }
             id='submit'
             type='submit'
           >

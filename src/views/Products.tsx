@@ -3,6 +3,8 @@ import { Box, Grid } from '@mui/material'
 import ProductCard from '../components/ProductCard'
 import useFetchData from '../hooks/useFetchData'
 import { ProductType } from '../types/products'
+import Loader from '../components/Loader'
+import ErrorState from '../components/ErrorState'
 
 const Products = () => {
   const { data, isLoading, error } = useFetchData<ProductType>(
@@ -12,15 +14,27 @@ const Products = () => {
 
   if (isLoading)
     return (
-      <Box pt={'92px'} px={14} minHeight={'90vh'}>
-        {'Loading...'}
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        px={14}
+        minHeight={'90vh'}
+      >
+        <Loader />
       </Box>
     )
 
   if (error)
     return (
-      <Box pt={'92px'} px={14} minHeight={'90vh'}>
-        {'An error ocurred...'}
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        px={14}
+        minHeight={'90vh'}
+      >
+        <ErrorState />
       </Box>
     )
 

@@ -16,6 +16,8 @@ import useStore from '../store'
 import { ProductType } from '../types/products'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import { CartItem } from '../types/cartItem'
+import Loader from '../components/Loader'
+import ErrorState from '../components/ErrorState'
 
 const SingleProduct = () => {
   const { productId } = useParams()
@@ -34,20 +36,38 @@ const SingleProduct = () => {
 
   if (isLoading)
     return (
-      <Box pt={'100px'} px={14} minHeight={'90vh'}>
-        Loading...
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        px={14}
+        minHeight={'90vh'}
+      >
+        <Loader />
       </Box>
     )
   if (errorFetching)
     return (
-      <Box pt={'100px'} px={14} minHeight={'90vh'}>
-        An error ocurred please try again
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        px={14}
+        minHeight={'90vh'}
+      >
+        <ErrorState />
       </Box>
     )
   if (!data)
     return (
-      <Box pt={'100px'} px={14} minHeight={'90vh'}>
-        An error ocurred please try again
+      <Box
+        display={'flex'}
+        justifyContent={'center'}
+        alignItems={'center'}
+        px={14}
+        minHeight={'90vh'}
+      >
+        <ErrorState />
       </Box>
     )
 

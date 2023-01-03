@@ -7,6 +7,7 @@ import { useSnackbar } from 'notistack'
 import useStore from '../store'
 import { api } from '../api'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
+import EmptyState from '../components/EmptyState'
 
 interface CartProps {
   onClose: () => void
@@ -22,6 +23,8 @@ const Cart = ({ onClose }: CartProps) => {
   } = useStore()
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
+
+  const isCartEmpty = !Boolean(cartItems.length)
 
   const handleCheckout = async () => {
     try {
@@ -57,49 +60,63 @@ const Cart = ({ onClose }: CartProps) => {
         <Typography>Shopping cart</Typography>
       </Stack>
       <Stack height={'95%'} justifyContent={'space-between'}>
-        <Stack my={2} spacing={2}>
-          {cartItems.map((item) => (
-            <Stack
-              alignItems={'center'}
-              direction={'row'}
-              justifyContent={'space-between'}
-              key={item.id}
-              p={2}
-              spacing={2}
-              bgcolor={'white'}
-            >
-              <Stack direction={'row'} spacing={2}>
-                <Box
-                  height={'64px'}
-                  width={'64px'}
-                  minWidth={'64px'}
-                  minHeight={'64px'}
-                  sx={{
-                    backgroundImage: `url(${
-                      item.imageUrl || PRODUCT_DEFAULT_IMAGE
-                    })`,
-                    backgroundPosition: 'center',
-                    backgroundRepeat: 'no-repeat',
-                    backgroundSize: 'cover',
-                  }}
-                />
+        <Stack my={2} spacing={2} height={'100%'}>
+          {!isCartEmpty ? (
+            cartItems.map((item) => (
+              <Stack
+                alignItems={'center'}
+                direction={'row'}
+                justifyContent={'space-between'}
+                key={item.id}
+                p={2}
+                spacing={2}
+                bgcolor={'white'}
+              >
+                <Stack direction={'row'} spacing={2}>
+                  <Box
+                    height={'64px'}
+                    width={'64px'}
+                    minWidth={'64px'}
+                    minHeight={'64px'}
+                    sx={{
+                      backgroundImage: `url(${
+                        item.imageUrl || PRODUCT_DEFAULT_IMAGE
+                      })`,
+                      backgroundPosition: 'center',
+                      backgroundRepeat: 'no-repeat',
+                      backgroundSize: 'cover',
+                    }}
+                  />
+                  <Stack>
+                    <Typography variant={'body1'}>{item.name}</Typography>
+                    <Typography variant={'caption'}>
+                      {item.description}
+                    </Typography>
+                    <Typography variant={'body2'}>
+                      Quantity: {item.quantity}
+                    </Typography>
+                  </Stack>
+                </Stack>
                 <Stack>
-                  <Typography variant={'body1'}>{item.name}</Typography>
-                  <Typography variant={'caption'}>
-                    {item.description}
-                  </Typography>
-                  <Typography variant={'body2'}>
-                    Quantity: {item.quantity}
-                  </Typography>
+                  <IconButton onClick={() => removeFromCart(item)}>
+                    <DeleteIcon fontSize='small' />
+                  </IconButton>
                 </Stack>
               </Stack>
-              <Stack>
-                <IconButton onClick={() => removeFromCart(item)}>
-                  <DeleteIcon fontSize='small' />
-                </IconButton>
-              </Stack>
-            </Stack>
-          ))}
+            ))
+          ) : (
+            <Box
+              height={'100%'}
+              display={'flex'}
+              justifyContent={'center'}
+              alignItems={'center'}
+            >
+              <EmptyState
+                header='Your cart is empty'
+                body='Go through our store items and add them to your cart!'
+              />
+            </Box>
+          )}
         </Stack>
         <Stack>
           <Stack direction={'row'} justifyContent={'space-between'} my={2}>
@@ -107,10 +124,18 @@ const Cart = ({ onClose }: CartProps) => {
             <Typography variant='body2'>{cartTotalPrice} EUR</Typography>
           </Stack>
           <Stack direction={'row'} justifyContent={'space-between'}>
-            <Button onClick={resetCart} variant={'outlined'}>
+            <Button
+              disabled={isCartEmpty}
+              onClick={resetCart}
+              variant={'outlined'}
+            >
               Empty Cart
             </Button>
-            <Button onClick={handleCheckout} variant={'contained'}>
+            <Button
+              disabled={isCartEmpty}
+              onClick={handleCheckout}
+              variant={'contained'}
+            >
               Checkout
             </Button>
           </Stack>

@@ -37,6 +37,7 @@ const Navbar = () => {
   }
 
   const inHomepage = location.pathname === '/'
+  const inContactPage = location.pathname === '/contact'
 
   return (
     <Fragment>
@@ -98,7 +99,7 @@ const Navbar = () => {
             <MenuItem onClick={() => handleLocaleSelect('en')}>EN</MenuItem>
             <MenuItem onClick={() => handleLocaleSelect('pt')}>PT</MenuItem>
           </Menu>
-          {!inHomepage ? (
+          {!inHomepage && !inContactPage ? (
             <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
               <Badge badgeContent={itemsInCart}>
                 <ShoppingCartIcon />
@@ -107,7 +108,11 @@ const Navbar = () => {
           ) : (
             <>
               <Tooltip title='Reach out to us!'>
-                <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
+                <IconButton
+                  color={'inherit'}
+                  sx={{ marginRight: 2 }}
+                  onClick={() => navigate('contact')}
+                >
                   <Box
                     alignItems={'center'}
                     display={'flex'}

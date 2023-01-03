@@ -31,7 +31,12 @@ const Footer = () => {
         </Typography>
       </Box>
       <Box color={'common.white'}>
-        <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
+        <IconButton
+          href='https://www.instagram.com/seed.and.spore/'
+          target={'_blank'}
+          color={'inherit'}
+          sx={{ marginRight: 2 }}
+        >
           <Box
             alignItems={'center'}
             display={'flex'}
@@ -46,7 +51,12 @@ const Footer = () => {
             }}
           />
         </IconButton>
-        <IconButton color={'inherit'} sx={{ marginRight: 2 }}>
+        <IconButton
+          href='https://www.facebook.com/SeedandSpore.pt'
+          target={'_blank'}
+          color={'inherit'}
+          sx={{ marginRight: 2 }}
+        >
           <Box
             alignItems={'center'}
             display={'flex'}

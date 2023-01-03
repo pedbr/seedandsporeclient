@@ -5,6 +5,7 @@ import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import Checkout from './views/Checkout'
+import Contact from './views/Contact'
 import Homepage from './views/Homepage'
 import Products from './views/Products'
 import SingleProduct from './views/SingleProduct'
@@ -18,6 +19,7 @@ const AppContainer = () => {
       <Routes>
         <Route path='/' element={<Homepage />} />
         <Route path='/store' element={<Products />} />
+        <Route path='/contact' element={<Contact />} />
         <Route path='/store/product/:productId' element={<SingleProduct />} />
         <Route path='/checkout' element={<Checkout />} />
         <Route path='/success' element={<SuccessfulPurchase />} />

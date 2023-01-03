@@ -71,7 +71,11 @@ const Homepage = () => {
               <Typography variant={'body1'} mb={2}>
                 {t('homepageAboutText')}
               </Typography>
-              <Button label={'CONTACT'} color={'black'} />
+              <Button
+                onClick={() => navigate('contact')}
+                label={'CONTACT'}
+                color={'black'}
+              />
             </Stack>
           </Grid>
         </Grid>

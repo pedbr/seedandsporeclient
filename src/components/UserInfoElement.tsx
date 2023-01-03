@@ -3,12 +3,19 @@ import useStore from '../store'
 
 const UserInfoElement = () => {
   const {
+    orderFullName,
     setOrderFullName,
+    orderEmail,
     setOrderEmail,
+    orderPhoneNumber,
     setOrderPhoneNumber,
+    orderDeliveryAddress,
     setOrderDeliveryAddress,
+    orderDeliveryPostCode,
     setOrderDeliveryPostCode,
+    orderDeliveryLocation,
     setOrderDeliveryLocation,
+    orderBillingAddress,
     setOrderBillingAddress,
   } = useStore()
   return (
@@ -20,6 +27,7 @@ const UserInfoElement = () => {
       <Grid item xs={12}>
         <TextField
           label={'Full Name'}
+          defaultValue={orderFullName}
           fullWidth
           onChange={(e) => setOrderFullName(e.target.value)}
         />
@@ -28,6 +36,7 @@ const UserInfoElement = () => {
       <Grid item xs={8}>
         <TextField
           label={'Email'}
+          defaultValue={orderEmail}
           fullWidth
           onChange={(e) => setOrderEmail(e.target.value)}
         />
@@ -36,6 +45,7 @@ const UserInfoElement = () => {
       <Grid item xs={4}>
         <TextField
           label={'Phone number'}
+          defaultValue={orderPhoneNumber}
           fullWidth
           onChange={(e) => setOrderPhoneNumber(e.target.value)}
         />
@@ -44,6 +54,7 @@ const UserInfoElement = () => {
       <Grid item xs={12}>
         <TextField
           label={'Delivery Address'}
+          defaultValue={orderDeliveryAddress}
           fullWidth
           onChange={(e) => setOrderDeliveryAddress(e.target.value)}
         />
@@ -52,6 +63,7 @@ const UserInfoElement = () => {
       <Grid item xs={5}>
         <TextField
           label={'Post Code'}
+          defaultValue={orderDeliveryPostCode}
           fullWidth
           onChange={(e) => setOrderDeliveryPostCode(e.target.value)}
         />
@@ -60,6 +72,7 @@ const UserInfoElement = () => {
       <Grid item xs={7}>
         <TextField
           label={'Location'}
+          defaultValue={orderDeliveryLocation}
           fullWidth
           onChange={(e) => setOrderDeliveryLocation(e.target.value)}
         />
@@ -68,6 +81,7 @@ const UserInfoElement = () => {
       <Grid item xs={12}>
         <TextField
           label={'Billing Address'}
+          defaultValue={orderBillingAddress}
           fullWidth
           onChange={(e) => setOrderBillingAddress(e.target.value)}
         />

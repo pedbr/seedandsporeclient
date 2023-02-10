@@ -33,7 +33,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={8}>
+      <Grid item xs={12} md={8}>
         <TextField
           label={'Email'}
           defaultValue={orderEmail}
@@ -42,7 +42,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <TextField
           label={'Phone number'}
           defaultValue={orderPhoneNumber}
@@ -69,7 +69,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={3}>
+      <Grid item xs={12} md={3}>
         <TextField
           label={'Post Code'}
           defaultValue={orderDeliveryPostCode}
@@ -78,7 +78,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={5}>
+      <Grid item xs={12} md={5}>
         <TextField
           label={'Location'}
           defaultValue={orderDeliveryLocation}
@@ -86,7 +86,7 @@ const UserInfoElement = () => {
           onChange={(e) => setOrderDeliveryLocation(e.target.value)}
         />
       </Grid>
-      <Grid item xs={4}>
+      <Grid item xs={12} md={4}>
         <TextField
           label={'Country'}
           defaultValue={'Portugal'}

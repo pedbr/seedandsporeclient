@@ -1,16 +1,16 @@
-import { useEffect, useState } from 'react'
-import { loadStripe } from '@stripe/stripe-js'
-import { Elements } from '@stripe/react-stripe-js'
 import { Box, Button, Grid, Stack, Typography } from '@mui/material'
+import { Elements } from '@stripe/react-stripe-js'
+import { loadStripe } from '@stripe/stripe-js'
+import { useEffect, useState } from 'react'
 
-import { api } from '../api'
-import useStore from '../store'
-import CheckoutForm from '../components/CheckoutForm'
-import { appearance } from '../styles/stripeAppearance'
-import { useNavigate } from 'react-router'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useNavigate } from 'react-router'
+import { api } from '../api'
+import CheckoutForm from '../components/CheckoutForm'
 import UserInfoElement from '../components/UserInfoElement'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
+import useStore from '../store'
+import { appearance } from '../styles/stripeAppearance'
 import { getShippingCost } from '../utils'
 
 const stripePromise = loadStripe(
@@ -55,7 +55,7 @@ const Checkout = () => {
   }
 
   return (
-    <Stack pt={'100px'} px={24} minHeight={'90vh'} spacing={2}>
+    <Stack pt={'100px'} px={{ xs: 4, lg: 24 }} minHeight={'90vh'} spacing={2}>
       <Box>
         <Button
           variant={'outlined'}
@@ -79,7 +79,7 @@ const Checkout = () => {
           </Typography>
           <Grid container spacing={2} mb={3}>
             {cartItems.map((item) => (
-              <Grid item xs={4} key={item.id}>
+              <Grid item xs={12} md={6} lg={4} key={item.id}>
                 <Stack
                   alignItems={'center'}
                   direction={'row'}
@@ -106,7 +106,7 @@ const Checkout = () => {
                     <Stack>
                       <Typography variant={'body1'}>{item.name}</Typography>
                       <Typography
-                        maxWidth={'180px'}
+                        maxWidth={'150px'}
                         variant={'caption'}
                         sx={{
                           whiteSpace: 'nowrap',
@@ -126,12 +126,10 @@ const Checkout = () => {
             ))}
           </Grid>
           <Typography variant={'caption'}>Shipping</Typography>
-          <Typography mb={3}>
-            Total shipping cost: {shippingCost} EUR
-          </Typography>
+          <Typography mb={3}>Total shipping cost: {shippingCost}€</Typography>
           <Box p={2} display={'flex'} justifyContent={'center'}>
             <Typography variant={'h3'}>
-              Total to pay: {totalOrderCost} EUR
+              Total to pay: {totalOrderCost}€
             </Typography>
           </Box>
         </Stack>

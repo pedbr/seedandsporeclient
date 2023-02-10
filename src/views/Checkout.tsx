@@ -55,7 +55,7 @@ const Checkout = () => {
   }
 
   return (
-    <Stack pt={'100px'} px={{ xs: 4, lg: 24 }} minHeight={'90vh'} spacing={2}>
+    <Stack pt={'100px'} px={{ xs: 2, lg: 24 }} minHeight={'90vh'} spacing={2}>
       <Box>
         <Button
           variant={'outlined'}
@@ -87,45 +87,59 @@ const Checkout = () => {
                   p={2}
                   spacing={2}
                   bgcolor={'white'}
+                  height={'100%'}
                 >
-                  <Stack direction={'row'} spacing={2}>
-                    <Box
-                      height={'64px'}
-                      width={'64px'}
-                      minWidth={'64px'}
-                      minHeight={'64px'}
-                      sx={{
-                        backgroundImage: `url(${
-                          item.imageUrl || PRODUCT_DEFAULT_IMAGE
-                        })`,
-                        backgroundPosition: 'center',
-                        backgroundRepeat: 'no-repeat',
-                        backgroundSize: 'cover',
-                      }}
-                    />
-                    <Stack>
-                      <Typography variant={'body1'}>{item.name}</Typography>
-                      <Typography
-                        maxWidth={'150px'}
-                        variant={'caption'}
+                  <Grid container spacing={2}>
+                    <Grid
+                      item
+                      xs={12}
+                      md={4}
+                      display={'flex'}
+                      alignItems={'center'}
+                      justifyContent={'center'}
+                    >
+                      <Box
+                        height={'80px'}
+                        width={'80px'}
+                        minWidth={'80px'}
+                        minHeight={'80px'}
                         sx={{
-                          whiteSpace: 'nowrap',
-                          overflow: 'hidden',
-                          textOverflow: 'ellipsis',
+                          backgroundImage: `url(${
+                            item.imageUrl || PRODUCT_DEFAULT_IMAGE
+                          })`,
+                          backgroundPosition: 'center',
+                          backgroundRepeat: 'no-repeat',
+                          backgroundSize: 'cover',
                         }}
-                      >
-                        {item.description}
-                      </Typography>
-                      <Typography variant={'body2'}>
-                        Quantity: {item.quantity}
-                      </Typography>
-                    </Stack>
-                  </Stack>
+                      />
+                    </Grid>
+                    <Grid item xs={12} md={8}>
+                      <Stack>
+                        <Typography variant={'body1'}>{item.name}</Typography>
+                        <Typography
+                          maxWidth={'150px'}
+                          variant={'caption'}
+                          sx={{
+                            whiteSpace: 'nowrap',
+                            overflow: 'hidden',
+                            textOverflow: 'ellipsis',
+                          }}
+                        >
+                          {item.description}
+                        </Typography>
+                        <Typography variant={'body2'}>
+                          Quantity: {item.quantity}
+                        </Typography>
+                      </Stack>
+                    </Grid>
+                  </Grid>
                 </Stack>
               </Grid>
             ))}
           </Grid>
-          <Typography variant={'caption'}>Shipping</Typography>
+          <Typography variant={'caption'} mt={2}>
+            Shipping
+          </Typography>
           <Typography mb={3}>Total shipping cost: {shippingCost}€</Typography>
           <Box p={2} display={'flex'} justifyContent={'center'}>
             <Typography variant={'h3'}>

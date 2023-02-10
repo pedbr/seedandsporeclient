@@ -19,12 +19,12 @@ const UserInfoElement = () => {
     setOrderBillingAddress,
   } = useStore()
   return (
-    <Grid container spacing={2} mb={2}>
-      <Grid item xs={12}>
+    <Grid container mb={2}>
+      <Grid item xs={12} mb={2}>
         <Typography>Personal Information</Typography>
       </Grid>
 
-      <Grid item xs={12}>
+      <Grid item xs={12} mb={2}>
         <TextField
           label={'Full Name'}
           defaultValue={orderFullName}
@@ -33,7 +33,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={12} md={8}>
+      <Grid item xs={12} md={8} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
           label={'Email'}
           defaultValue={orderEmail}
@@ -42,7 +42,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={4} mb={2}>
         <TextField
           label={'Phone number'}
           defaultValue={orderPhoneNumber}
@@ -50,7 +50,7 @@ const UserInfoElement = () => {
           onChange={(e) => setOrderPhoneNumber(e.target.value)}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} mb={2}>
         <Box p={2} bgcolor={'branding.mushroom'} borderRadius={'12px'}>
           <Typography variant='body2'>
             IMPORTANT NOTE: As of now, we are only able to ship to Portugal.
@@ -60,7 +60,7 @@ const UserInfoElement = () => {
           </Typography>
         </Box>
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} mb={2}>
         <TextField
           label={'Delivery Address'}
           defaultValue={orderDeliveryAddress}
@@ -69,7 +69,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={12} md={3}>
+      <Grid item xs={12} md={3} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
           label={'Post Code'}
           defaultValue={orderDeliveryPostCode}
@@ -78,7 +78,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={12} md={5}>
+      <Grid item xs={12} md={5} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
           label={'Location'}
           defaultValue={orderDeliveryLocation}
@@ -86,7 +86,7 @@ const UserInfoElement = () => {
           onChange={(e) => setOrderDeliveryLocation(e.target.value)}
         />
       </Grid>
-      <Grid item xs={12} md={4}>
+      <Grid item xs={12} md={4} mb={2}>
         <TextField
           label={'Country'}
           defaultValue={'Portugal'}
@@ -96,7 +96,7 @@ const UserInfoElement = () => {
           InputLabelProps={{ shrink: true }}
         />
       </Grid>
-      <Grid item xs={12}>
+      <Grid item xs={12} mb={2}>
         <TextField
           label={'Billing Address'}
           defaultValue={orderBillingAddress}

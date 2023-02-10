@@ -46,12 +46,12 @@ const Products = () => {
     )
 
   return (
-    <Grid container pt={'92px'} px={14}>
+    <Grid container pt={'92px'} px={{ xs: 2, md: 14 }}>
       {Boolean(data.length) ? (
         data
           .filter((product) => product.active)
           .map((product) => (
-            <Grid item xs={4} p={4} key={product.id}>
+            <Grid item xs={12} md={6} lg={4} p={4} key={product.id}>
               <ProductCard
                 id={product.id}
                 name={product.name[currentLocale]}

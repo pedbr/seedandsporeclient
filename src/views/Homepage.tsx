@@ -35,13 +35,19 @@ const Homepage = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <Typography color={'branding.sunlight'} mb={2} variant='h1'>
+          <Typography
+            textAlign={'center'}
+            color={'branding.sunlight'}
+            mb={2}
+            variant='h1'
+          >
             {t('homepageHeader')}
           </Typography>
           <Typography
             color={'branding.pomegranate'}
             variant='h4'
             fontWeight={500}
+            textAlign={'center'}
           >
             {t('homepageSubheader')}
           </Typography>
@@ -51,11 +57,17 @@ const Homepage = () => {
         alignItems={'center'}
         display={'flex'}
         justifyContent={'center'}
-        height={'90vh'}
+        minHeight={'90vh'}
         width={'100vw'}
       >
-        <Grid container px={12} spacing={10}>
-          <Grid item xs={5} display={'flex'} justifyContent={'flex-end'}>
+        <Grid container px={{ xs: 3, md: 12 }} py={4} spacing={10}>
+          <Grid
+            item
+            xs={12}
+            md={5}
+            display={'flex'}
+            justifyContent={'flex-end'}
+          >
             <Box
               width={'450px'}
               height={'400px'}
@@ -67,7 +79,7 @@ const Homepage = () => {
               }}
             />
           </Grid>
-          <Grid item xs={7}>
+          <Grid item xs={12} md={7}>
             <Stack>
               <Typography variant={'h2'} mb={2}>
                 {t('homepageAboutHeader')}

@@ -10,7 +10,7 @@ const Footer = () => {
       justifyContent={'space-between'}
       bgcolor={'branding.soil'}
       height={'200px'}
-      px={14}
+      px={{ xs: 2, md: 14 }}
     >
       <Box
         color={'common.white'}
@@ -31,7 +31,12 @@ const Footer = () => {
             backgroundSize: 'cover',
           }}
         />
-        <Typography color={'branding.mushroom'} mt={1} variant={'h4'}>
+        <Typography
+          sx={{ display: { xs: 'none', md: 'flex' } }}
+          color={'branding.mushroom'}
+          mt={1}
+          variant={'h4'}
+        >
           SEED AND SPORE
         </Typography>
       </Box>

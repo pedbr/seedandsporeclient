@@ -89,7 +89,7 @@ const SingleProduct = () => {
   const handleReduceQuantity = () => setQuantity(quantity - 1)
 
   return (
-    <Box pt={'100px'} px={14} minHeight={'90vh'}>
+    <Box pt={'100px'} px={{ xs: 4, lg: 14 }} minHeight={'90vh'}>
       <Grid container spacing={2}>
         <Grid item xs={12} mb={4}>
           <Button
@@ -102,7 +102,7 @@ const SingleProduct = () => {
             Back to store
           </Button>
         </Grid>
-        <Grid item xs={4} display={'flex'} justifyContent={'flex-end'}>
+        <Grid item xs={12} lg={4} display={'flex'} justifyContent={'center'}>
           <Box
             height={'500px'}
             width={'500px'}
@@ -114,7 +114,7 @@ const SingleProduct = () => {
             }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} lg={6} mb={4}>
           <Stack spacing={3}>
             {itemOutOfStock && (
               <Box>
@@ -148,25 +148,37 @@ const SingleProduct = () => {
             </Stack>
             {itemOutOfStock ? (
               <Stack>
-                <Box
+                <Grid
+                  container
                   display={'flex'}
                   width={'fit-content'}
                   bgcolor={'branding.mushroom'}
                   p={2}
                   borderRadius={'12px'}
                 >
-                  <Typography width={'400px'} variant={'caption'}>
-                    This product is currently out of stock, reach out to us to
-                    let us know about your interest and we will do our best to
-                    re-stock as soon as possible
-                  </Typography>
-                  <Button
-                    variant='outlined'
-                    onClick={() => navigate('/contact')}
+                  <Grid item xs={12} lg={8}>
+                    <Typography width={'400px'} variant={'caption'} mr={2}>
+                      This product is currently out of stock, reach out to us to
+                      let us know about your interest and we will do our best to
+                      re-stock as soon as possible
+                    </Typography>
+                  </Grid>
+                  <Grid
+                    item
+                    xs={12}
+                    lg={4}
+                    display={'flex'}
+                    justifyContent={{ md: 'flex-start', lg: 'flex-end' }}
                   >
-                    Contact us!
-                  </Button>
-                </Box>
+                    <Button
+                      variant='outlined'
+                      onClick={() => navigate('/contact')}
+                      sx={{ marginTop: { xs: 2, lg: 0 } }}
+                    >
+                      Contact us!
+                    </Button>
+                  </Grid>
+                </Grid>
               </Stack>
             ) : (
               <Stack spacing={2} width={'300px'} pt={2}>
@@ -179,6 +191,7 @@ const SingleProduct = () => {
                     disabled={currentlyAvailableStock === 0}
                     sx={{
                       marginRight: 2,
+                      width: '100px',
                     }}
                   />
                   <ButtonGroup variant='contained'>

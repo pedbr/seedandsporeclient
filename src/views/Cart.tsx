@@ -1,13 +1,13 @@
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { useNavigate } from 'react-router-dom'
+import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
 import { useSnackbar } from 'notistack'
+import { useNavigate } from 'react-router-dom'
 
-import useStore from '../store'
 import { api } from '../api'
-import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import EmptyState from '../components/EmptyState'
+import { PRODUCT_DEFAULT_IMAGE } from '../constants'
+import useStore from '../store'
 
 interface CartProps {
   onClose: () => void
@@ -48,7 +48,7 @@ const Cart = ({ onClose }: CartProps) => {
   }
 
   return (
-    <Box height={'100vh'} p={2} width={400} bgcolor={'ghostwhite'}>
+    <Box height={'100vh'} p={2} width={350} bgcolor={'ghostwhite'}>
       <Stack
         alignItems={'center'}
         direction={'row'}
@@ -72,7 +72,7 @@ const Cart = ({ onClose }: CartProps) => {
                 spacing={2}
                 bgcolor={'white'}
               >
-                <Stack direction={'row'} spacing={2}>
+                <Stack direction={'row'} alignItems={'center'} spacing={2}>
                   <Box
                     height={'64px'}
                     width={'64px'}
@@ -85,11 +85,40 @@ const Cart = ({ onClose }: CartProps) => {
                       backgroundPosition: 'center',
                       backgroundRepeat: 'no-repeat',
                       backgroundSize: 'cover',
+                      '&:hover': {
+                        cursor: 'pointer',
+                      },
+                    }}
+                    onClick={() => {
+                      navigate(`/store/product/${item.id}`)
+                      onClose()
                     }}
                   />
                   <Stack>
-                    <Typography variant={'body1'}>{item.name}</Typography>
-                    <Typography variant={'caption'}>
+                    <Typography
+                      sx={{
+                        '&:hover': {
+                          cursor: 'pointer',
+                          textDecoration: 'underline',
+                        },
+                      }}
+                      variant={'body1'}
+                      onClick={() => {
+                        navigate(`/store/product/${item.id}`)
+                        onClose()
+                      }}
+                    >
+                      {item.name}
+                    </Typography>
+                    <Typography
+                      sx={{
+                        display: '-webkit-box',
+                        overflow: 'hidden',
+                        WebkitBoxOrient: 'vertical',
+                        WebkitLineClamp: 3,
+                      }}
+                      variant={'caption'}
+                    >
                       {item.description}
                     </Typography>
                     <Typography variant={'body2'}>

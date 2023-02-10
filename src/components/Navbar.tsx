@@ -1,3 +1,4 @@
+import MoreVertIcon from '@mui/icons-material/MoreVert'
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import {
   Badge,
@@ -26,14 +27,26 @@ const Navbar = () => {
   const [isCartOpen, setCartOpen] = useState(false)
   const { i18n } = useTranslation()
 
+  const [languageMenuAnchorEl, setLanguageMenuAnchorEl] =
+    useState<null | HTMLElement>(null)
+  const languageMenuOpen = Boolean(languageMenuAnchorEl)
+  const handleLanguageMenuClick = (
+    event: React.MouseEvent<HTMLButtonElement>
+  ) => {
+    setLanguageMenuAnchorEl(event.currentTarget)
+  }
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null)
   const open = Boolean(anchorEl)
-  const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget)
   }
+  const handleClose = () => {
+    setAnchorEl(null)
+  }
+
   const handleLocaleSelect = (locale: string) => {
     i18n.changeLanguage(locale)
-    setAnchorEl(null)
+    setLanguageMenuAnchorEl(null)
   }
 
   const inHomepage = location.pathname === '/'
@@ -79,6 +92,7 @@ const Navbar = () => {
             ml={1}
             variant={'h4'}
             fontSize={20}
+            sx={{ display: { xs: 'none', md: 'flex' } }}
           >
             SEED AND SPORE
           </Typography>
@@ -89,16 +103,16 @@ const Navbar = () => {
           display={'flex'}
         >
           <Button
-            onClick={handleClick}
+            onClick={handleLanguageMenuClick}
             color={'inherit'}
             sx={{ marginRight: 2 }}
           >
             {i18n.language}
           </Button>
           <Menu
-            anchorEl={anchorEl}
-            open={open}
-            onClose={() => setAnchorEl(null)}
+            anchorEl={languageMenuAnchorEl}
+            open={languageMenuOpen}
+            onClose={() => setLanguageMenuAnchorEl(null)}
           >
             <MenuItem onClick={() => handleLocaleSelect('en')}>EN</MenuItem>
             <MenuItem onClick={() => handleLocaleSelect('pt')}>PT</MenuItem>
@@ -115,48 +129,74 @@ const Navbar = () => {
             </IconButton>
           ) : (
             <>
-              <Tooltip title='Reach out to us!'>
-                <IconButton
-                  color={'inherit'}
-                  sx={{ marginRight: 2 }}
-                  onClick={() => navigate('contact')}
-                >
-                  <Box
-                    alignItems={'center'}
-                    display={'flex'}
-                    justifyContent={'center'}
-                    height={'40px'}
-                    width={'40px'}
-                    sx={{
-                      backgroundImage: `url(${ICONS.mushroom.contact})`,
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                    }}
-                  />
+              <Box
+                color={'branding.pomegranate'}
+                sx={{ display: { xs: 'block', md: 'none' } }}
+              >
+                <IconButton color='inherit' onClick={handleClick}>
+                  <MoreVertIcon />
                 </IconButton>
-              </Tooltip>
-              <Tooltip title='Visit our shop'>
-                <IconButton
-                  color={'inherit'}
-                  sx={{ marginRight: 2 }}
-                  onClick={() => navigate('store')}
+                <Menu
+                  anchorEl={anchorEl}
+                  open={open}
+                  onClose={handleClose}
+                  PaperProps={{
+                    style: {
+                      maxHeight: 58 * 4.5,
+                      width: '20ch',
+                    },
+                  }}
                 >
-                  <Box
-                    alignItems={'center'}
-                    display={'flex'}
-                    justifyContent={'center'}
-                    height={'40px'}
-                    width={'40px'}
-                    sx={{
-                      backgroundImage: `url(${ICONS.mushroom.cart})`,
-                      backgroundPosition: 'center',
-                      backgroundRepeat: 'no-repeat',
-                      backgroundSize: 'cover',
-                    }}
-                  />
-                </IconButton>
-              </Tooltip>
+                  <MenuItem onClick={() => navigate('contact')}>
+                    Contact
+                  </MenuItem>
+                  <MenuItem onClick={() => navigate('store')}>Store</MenuItem>
+                </Menu>
+              </Box>
+              <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
+                <Tooltip title='Reach out to us!'>
+                  <IconButton
+                    color={'inherit'}
+                    sx={{ marginRight: 2 }}
+                    onClick={() => navigate('contact')}
+                  >
+                    <Box
+                      alignItems={'center'}
+                      display={'flex'}
+                      justifyContent={'center'}
+                      height={'40px'}
+                      width={'40px'}
+                      sx={{
+                        backgroundImage: `url(${ICONS.mushroom.contact})`,
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+                <Tooltip title='Visit our shop'>
+                  <IconButton
+                    color={'inherit'}
+                    sx={{ marginRight: 2 }}
+                    onClick={() => navigate('store')}
+                  >
+                    <Box
+                      alignItems={'center'}
+                      display={'flex'}
+                      justifyContent={'center'}
+                      height={'40px'}
+                      width={'40px'}
+                      sx={{
+                        backgroundImage: `url(${ICONS.mushroom.cart})`,
+                        backgroundPosition: 'center',
+                        backgroundRepeat: 'no-repeat',
+                        backgroundSize: 'cover',
+                      }}
+                    />
+                  </IconButton>
+                </Tooltip>
+              </Box>
             </>
           )}
         </Box>

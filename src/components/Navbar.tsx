@@ -51,6 +51,7 @@ const Navbar = () => {
 
   const inHomepage = location.pathname === '/'
   const inContactPage = location.pathname === '/contact'
+  const inTermsPage = location.pathname === '/terms-and-conditions'
 
   return (
     <Fragment>
@@ -117,7 +118,7 @@ const Navbar = () => {
             <MenuItem onClick={() => handleLocaleSelect('en')}>EN</MenuItem>
             <MenuItem onClick={() => handleLocaleSelect('pt')}>PT</MenuItem>
           </Menu>
-          {!inHomepage && !inContactPage ? (
+          {!inHomepage && !inContactPage && !inTermsPage ? (
             <IconButton
               color={'inherit'}
               onClick={() => setCartOpen(true)}

@@ -1,8 +1,8 @@
 import { Box } from '@mui/material'
 import { SnackbarProvider } from 'notistack'
 import { Route, Routes } from 'react-router-dom'
-import Footer from './components/Footer'
 
+import Footer from './components/Footer'
 import Navbar from './components/Navbar'
 import ScrollToTop from './components/ScrollToTop'
 import Checkout from './views/Checkout'
@@ -11,6 +11,7 @@ import Homepage from './views/Homepage'
 import Products from './views/Products'
 import SingleProduct from './views/SingleProduct'
 import SuccessfulPurchase from './views/SuccessfulPurchase'
+import TermsAndConditions from './views/TermsAndConditions'
 
 const AppContainer = () => {
   return (
@@ -25,6 +26,10 @@ const AppContainer = () => {
           <Route path='/store/product/:productId' element={<SingleProduct />} />
           <Route path='/checkout' element={<Checkout />} />
           <Route path='/success' element={<SuccessfulPurchase />} />
+          <Route
+            path='/terms-and-conditions'
+            element={<TermsAndConditions />}
+          />
         </Routes>
       </Box>
 

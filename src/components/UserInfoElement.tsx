@@ -1,4 +1,4 @@
-import { Grid, TextField, Typography } from '@mui/material'
+import { Box, Grid, TextField, Typography } from '@mui/material'
 import useStore from '../store'
 
 const UserInfoElement = () => {
@@ -50,7 +50,16 @@ const UserInfoElement = () => {
           onChange={(e) => setOrderPhoneNumber(e.target.value)}
         />
       </Grid>
-
+      <Grid item xs={12}>
+        <Box p={2} bgcolor={'branding.mushroom'} borderRadius={'12px'}>
+          <Typography variant='body2'>
+            IMPORTANT NOTE: As of now, we are only able to ship to Portugal.
+            We're working hard to establish the best logistics possible so we
+            can ship our products abroad in a way that they arrive to you in the
+            best conditions.
+          </Typography>
+        </Box>
+      </Grid>
       <Grid item xs={12}>
         <TextField
           label={'Delivery Address'}
@@ -60,7 +69,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={5}>
+      <Grid item xs={3}>
         <TextField
           label={'Post Code'}
           defaultValue={orderDeliveryPostCode}
@@ -69,7 +78,7 @@ const UserInfoElement = () => {
         />
       </Grid>
 
-      <Grid item xs={7}>
+      <Grid item xs={5}>
         <TextField
           label={'Location'}
           defaultValue={orderDeliveryLocation}
@@ -77,7 +86,16 @@ const UserInfoElement = () => {
           onChange={(e) => setOrderDeliveryLocation(e.target.value)}
         />
       </Grid>
-
+      <Grid item xs={4}>
+        <TextField
+          label={'Country'}
+          defaultValue={'Portugal'}
+          value={'Portugal'}
+          fullWidth
+          disabled
+          InputLabelProps={{ shrink: true }}
+        />
+      </Grid>
       <Grid item xs={12}>
         <TextField
           label={'Billing Address'}

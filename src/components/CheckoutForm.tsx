@@ -1,6 +1,7 @@
+import { LoadingButton } from '@mui/lab'
+import { Box, Typography } from '@mui/material'
+import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useState } from 'react'
-import { PaymentElement, useStripe, useElements } from '@stripe/react-stripe-js'
-import { Box, Button, Typography } from '@mui/material'
 import useStore from '../store'
 
 export default function CheckoutForm() {
@@ -26,7 +27,7 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        return_url: 'http://localhost:3006/success',
+        return_url: 'https://seedandspore.pt/success',
       },
     })
 
@@ -49,16 +50,15 @@ export default function CheckoutForm() {
       <form id='payment-form' onSubmit={handleSubmit}>
         <PaymentElement id='payment-element' />
         <Box display={'flex'} justifyContent={'center'} py={3}>
-          <Button
+          <LoadingButton
+            loading={isLoading}
             variant={'contained'}
-            disabled={
-              isLoading || !stripe || !elements || !Boolean(cartItems.length)
-            }
+            disabled={!stripe || !elements || !Boolean(cartItems.length)}
             id='submit'
             type='submit'
           >
             <span id='button-text'>Pay now</span>
-          </Button>
+          </LoadingButton>
         </Box>
 
         {/* Show any error or success messages */}

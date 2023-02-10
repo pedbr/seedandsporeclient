@@ -9,6 +9,7 @@ import {
   TextField,
   Typography,
 } from '@mui/material'
+import { useSnackbar } from 'notistack'
 import { useMemo, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
@@ -27,6 +28,7 @@ const SingleProduct = () => {
   const navigate = useNavigate()
   const [quantity, setQuantity] = useState(1)
   const { i18n } = useTranslation()
+  const { enqueueSnackbar } = useSnackbar()
 
   const currentLocale: string = useMemo(() => i18n.language, [i18n.language])
 
@@ -227,6 +229,13 @@ const SingleProduct = () => {
                       quantity: Number(quantity),
                       weight,
                     })
+                    enqueueSnackbar(
+                      'This product was added to your cart! 🎉 ',
+                      {
+                        variant: 'success',
+                        anchorOrigin: { horizontal: 'center', vertical: 'top' },
+                      }
+                    )
                   }}
                   size='small'
                 >

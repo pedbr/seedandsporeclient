@@ -1,7 +1,9 @@
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import DeleteIcon from '@mui/icons-material/Delete'
-import { Box, Button, IconButton, Stack, Typography } from '@mui/material'
+import { LoadingButton } from '@mui/lab'
+import { Box, IconButton, Stack, Typography } from '@mui/material'
 import { useSnackbar } from 'notistack'
+import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 import { api } from '../api'
@@ -23,10 +25,12 @@ const Cart = ({ onClose }: CartProps) => {
   } = useStore()
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
+  const [isLoading, setIsLoading] = useState(false)
 
   const isCartEmpty = !Boolean(cartItems.length)
 
   const handleCheckout = async () => {
+    setIsLoading(true)
     try {
       const { data } = await api.post('/orders', {
         products: cartItems,
@@ -44,6 +48,8 @@ const Cart = ({ onClose }: CartProps) => {
         variant: 'error',
       })
       console.log(error)
+    } finally {
+      setIsLoading(false)
     }
   }
 
@@ -153,20 +159,22 @@ const Cart = ({ onClose }: CartProps) => {
             <Typography variant='body2'>{cartTotalPrice} EUR</Typography>
           </Stack>
           <Stack direction={'row'} justifyContent={'space-between'}>
-            <Button
+            <LoadingButton
+              loading={isLoading}
               disabled={isCartEmpty}
               onClick={resetCart}
               variant={'outlined'}
             >
               Empty Cart
-            </Button>
-            <Button
+            </LoadingButton>
+            <LoadingButton
+              loading={isLoading}
               disabled={isCartEmpty}
               onClick={handleCheckout}
               variant={'contained'}
             >
               Checkout
-            </Button>
+            </LoadingButton>
           </Stack>
         </Stack>
       </Stack>

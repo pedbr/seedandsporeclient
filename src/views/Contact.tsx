@@ -8,6 +8,7 @@ const Contact = () => {
       justifyContent={'center'}
       alignItems={'center'}
       height={'100vh'}
+      px={2}
       sx={{
         backgroundImage: `url(${IMAGES.ctaSection})`,
         backgroundPosition: 'center',

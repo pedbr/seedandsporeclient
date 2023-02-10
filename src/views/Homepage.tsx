@@ -35,10 +35,14 @@ const Homepage = () => {
           justifyContent={'center'}
           alignItems={'center'}
         >
-          <Typography color={'branding.mushroom'} mb={2} variant='h1'>
+          <Typography color={'branding.sunlight'} mb={2} variant='h1'>
             {t('homepageHeader')}
           </Typography>
-          <Typography color={'branding.mushroom'} variant='h4' fontWeight={500}>
+          <Typography
+            color={'branding.pomegranate'}
+            variant='h4'
+            fontWeight={500}
+          >
             {t('homepageSubheader')}
           </Typography>
         </Box>
@@ -47,7 +51,7 @@ const Homepage = () => {
         alignItems={'center'}
         display={'flex'}
         justifyContent={'center'}
-        height={'70vh'}
+        height={'90vh'}
         width={'100vw'}
       >
         <Grid container px={12} spacing={10}>

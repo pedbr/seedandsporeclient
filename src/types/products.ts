@@ -5,6 +5,7 @@ interface TranslationString {
 export interface ProductType {
   id: string
   createdAt: number
+  active: boolean
   name: TranslationString
   stock: number
   price: number

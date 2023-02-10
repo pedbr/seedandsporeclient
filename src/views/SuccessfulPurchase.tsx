@@ -80,7 +80,7 @@ const SuccessfulPurchase = () => {
   }
 
   return (
-    <Box>
+    <Box p={10}>
       <Typography variant={'h1'}>{getMessage()}</Typography>
     </Box>
   )

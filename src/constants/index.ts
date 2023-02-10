@@ -5,7 +5,7 @@ export const IMAGES = {
   about:
     'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/diogo-wiebke.png?alt=media&token=2ae64fa0-9db3-418b-9fa5-8d0939986a95',
   landingPage:
-    'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/homepage-image.JPG?alt=media&token=34487e69-20b7-4cdc-8552-555b6bda3ba8',
+    'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/landing-page.jpg?alt=media&token=63c880c5-3b27-4cfa-9059-c31ad93d213d',
   ctaSection:
     'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/cta-section.png?alt=media&token=b2d100ab-993b-4717-b832-b90773583b35',
 }
@@ -16,6 +16,8 @@ export const LOGOS = {
       'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/logo%2Fstamp%2FSeed%26Spore_Logo-29.png?alt=media&token=0beec295-e53b-4d1d-afe4-911b7b14a4bd',
     mushroomFilled:
       'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/logo%2Fstamp%2FSeed%26Spore_Logo-30.png?alt=media&token=15a1cc72-590b-4e1f-8ae2-3c5d9956561e',
+    pomegranate:
+      'https://firebasestorage.googleapis.com/v0/b/seedandsporept.appspot.com/o/logo%2Fstamp%2FSeed%26Spore_Logo-31.png?alt=media&token=5786cc38-3e28-4751-8983-dcf8f0384193',
   },
 }
 

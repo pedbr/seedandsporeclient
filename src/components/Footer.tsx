@@ -12,7 +12,12 @@ const Footer = () => {
       height={'200px'}
       px={14}
     >
-      <Box color={'common.white'} display={'flex'} alignItems={'center'}>
+      <Box
+        color={'common.white'}
+        display={'flex'}
+        flexDirection={'column'}
+        alignItems={'center'}
+      >
         <Box
           alignItems={'center'}
           display={'flex'}
@@ -26,7 +31,7 @@ const Footer = () => {
             backgroundSize: 'cover',
           }}
         />
-        <Typography color={'branding.mushroom'} ml={1} variant={'subtitle1'}>
+        <Typography color={'branding.mushroom'} mt={1} variant={'h4'}>
           SEED AND SPORE
         </Typography>
       </Box>

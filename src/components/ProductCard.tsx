@@ -1,8 +1,10 @@
 import {
+  Box,
   Card,
   CardActionArea,
   CardContent,
   CardMedia,
+  Chip,
   Typography,
 } from '@mui/material'
 import { useNavigate } from 'react-router'
@@ -11,21 +13,20 @@ import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 interface ProductCardProps {
   id: string
   name: string
-  description: string
   price: number
   imageUrl: string
-  weight: number
+  stock: number
 }
 
 const ProductCard = ({
   id,
   name,
-  description,
   price,
   imageUrl,
-  weight,
+  stock,
 }: ProductCardProps) => {
   const navigate = useNavigate()
+  const itemOutOfStock = Number(stock) === 0
 
   return (
     <Card sx={{ maxWidth: 400 }} elevation={0} onClick={() => null}>
@@ -37,6 +38,11 @@ const ProductCard = ({
           alt='product'
         />
         <CardContent>
+          {itemOutOfStock && (
+            <Box mb={1}>
+              <Chip label='Out of stock' color='error' size='small' />
+            </Box>
+          )}
           <Typography gutterBottom variant='h4' component='div'>
             {name}
           </Typography>

@@ -1,24 +1,25 @@
-import { useMemo, useState } from 'react'
-import { useTranslation } from 'react-i18next'
+import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 import {
   Box,
   Button,
   ButtonGroup,
+  Chip,
   Grid,
   Stack,
   TextField,
   Typography,
 } from '@mui/material'
+import { useMemo, useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useParams } from 'react-router'
-import ArrowBackIcon from '@mui/icons-material/ArrowBack'
 
+import ErrorState from '../components/ErrorState'
+import Loader from '../components/Loader'
+import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useFetchById from '../hooks/useFetchById'
 import useStore from '../store'
-import { ProductType } from '../types/products'
-import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import { CartItem } from '../types/cartItem'
-import Loader from '../components/Loader'
-import ErrorState from '../components/ErrorState'
+import { ProductType } from '../types/products'
 
 const SingleProduct = () => {
   const { productId } = useParams()
@@ -82,26 +83,29 @@ const SingleProduct = () => {
 
   const currentlyAvailableStock = stock - (currentItemInCart?.quantity || 0)
 
+  const itemOutOfStock = Number(data?.stock) === 0
+
   const handleAddQuantity = () => setQuantity(quantity + 1)
   const handleReduceQuantity = () => setQuantity(quantity - 1)
 
   return (
     <Box pt={'100px'} px={14} minHeight={'90vh'}>
       <Grid container spacing={2}>
-        <Grid item xs={12}>
+        <Grid item xs={12} mb={4}>
           <Button
             variant={'outlined'}
             size={'small'}
             onClick={() => navigate('/store')}
+            startIcon={<ArrowBackIcon />}
+            sx={{ marginLeft: 6.5 }}
           >
-            <ArrowBackIcon sx={{ marginRight: 1 }} />
             Back to store
           </Button>
         </Grid>
-        <Grid item xs={6} display={'flex'} justifyContent={'flex-end'}>
+        <Grid item xs={4} display={'flex'} justifyContent={'flex-end'}>
           <Box
-            height={'400px'}
-            width={'400px'}
+            height={'500px'}
+            width={'500px'}
             sx={{
               backgroundImage: `url(${imageUrl || PRODUCT_DEFAULT_IMAGE})`,
               backgroundPosition: 'center',
@@ -111,72 +115,112 @@ const SingleProduct = () => {
           />
         </Grid>
         <Grid item xs={6}>
-          <Stack spacing={2}>
-            <Typography variant={'h2'}>{data?.name[currentLocale]}</Typography>
+          <Stack spacing={3}>
+            {itemOutOfStock && (
+              <Box>
+                <Chip label='Out of stock' color='error' size='small' />
+              </Box>
+            )}
+            <Typography color={'branding.soil'} variant={'h2'}>
+              {data?.name[currentLocale]}
+            </Typography>
             <Stack>
-              <Typography variant={'button'}>Price</Typography>
+              <Typography variant={'button'} fontSize={'12px'}>
+                Price
+              </Typography>
               <Typography
                 variant={'body1'}
-              >{`${data?.price} EUR/Unit`}</Typography>
+                fontSize={'24px'}
+              >{`${data?.price} €/Unit`}</Typography>
             </Stack>
 
             <Stack>
-              <Typography variant={'button'}>Description</Typography>
-              <Typography variant={'caption'}>
+              <Typography
+                variant={'button'}
+                fontSize={'12px'}
+                color={'text.primary'}
+              >
+                Description
+              </Typography>
+              <Typography variant={'body1'}>
                 {data?.description[currentLocale]}
               </Typography>
             </Stack>
-            <Stack>
-              <Typography variant={'button'}>Weight</Typography>
-              <Typography variant={'caption'}>{`${data?.weight}G`}</Typography>
-            </Stack>
-            <Stack spacing={2} width={'300px'} pt={2}>
-              <Box display={'flex'} alignItems={'center'}>
-                <TextField
-                  InputLabelProps={{ shrink: true }}
-                  inputProps={{ readOnly: true }}
-                  label={'Quantity'}
-                  value={String(quantity)}
-                  sx={{
-                    marginRight: 2,
-                  }}
-                />
-                <ButtonGroup variant='contained'>
+            {itemOutOfStock ? (
+              <Stack>
+                <Box
+                  display={'flex'}
+                  width={'fit-content'}
+                  bgcolor={'branding.mushroom'}
+                  p={2}
+                  borderRadius={'12px'}
+                >
+                  <Typography width={'400px'} variant={'caption'}>
+                    This product is currently out of stock, reach out to us to
+                    let us know about your interest and we will do our best to
+                    re-stock as soon as possible
+                  </Typography>
                   <Button
-                    onClick={handleReduceQuantity}
-                    disabled={quantity === 0}
+                    variant='outlined'
+                    onClick={() => navigate('/contact')}
                   >
-                    -
+                    Contact us!
                   </Button>
-                  <Button
-                    onClick={handleAddQuantity}
-                    disabled={quantity === currentlyAvailableStock}
-                  >
-                    +
-                  </Button>
-                </ButtonGroup>
-              </Box>
+                </Box>
+              </Stack>
+            ) : (
+              <Stack spacing={2} width={'300px'} pt={2}>
+                <Box display={'flex'} alignItems={'center'}>
+                  <TextField
+                    InputLabelProps={{ shrink: true }}
+                    inputProps={{ readOnly: true }}
+                    label={'Quantity'}
+                    value={String(quantity)}
+                    disabled={currentlyAvailableStock === 0}
+                    sx={{
+                      marginRight: 2,
+                    }}
+                  />
+                  <ButtonGroup variant='contained'>
+                    <Button
+                      onClick={handleReduceQuantity}
+                      disabled={quantity === 0 || currentlyAvailableStock === 0}
+                    >
+                      -
+                    </Button>
+                    <Button
+                      onClick={handleAddQuantity}
+                      disabled={
+                        quantity === currentlyAvailableStock ||
+                        currentlyAvailableStock === 0
+                      }
+                    >
+                      +
+                    </Button>
+                  </ButtonGroup>
+                </Box>
 
-              <Button
-                variant={'contained'}
-                disabled={quantity === 0}
-                onClick={() => {
-                  setQuantity(quantity === currentlyAvailableStock ? 0 : 1)
-                  addToCart({
-                    id,
-                    name: name[currentLocale],
-                    description: description[currentLocale],
-                    price,
-                    imageUrl,
-                    quantity: Number(quantity),
-                    weight,
-                  })
-                }}
-                size='small'
-              >
-                Add to cart
-              </Button>
-            </Stack>
+                <Button
+                  variant={'contained'}
+                  disabled={quantity === 0 || currentlyAvailableStock === 0}
+                  onClick={() => {
+                    setQuantity(quantity === currentlyAvailableStock ? 0 : 1)
+                    addToCart({
+                      id,
+                      name: name[currentLocale],
+                      description: description[currentLocale],
+                      price,
+                      imageUrl,
+                      quantity: Number(quantity),
+                      weight,
+                    })
+                  }}
+                  size='small'
+                >
+                  Add to cart
+                </Button>
+              </Stack>
+            )}
           </Stack>
         </Grid>
       </Grid>

@@ -1,5 +1,6 @@
+import { Box } from '@mui/material'
 import { SnackbarProvider } from 'notistack'
-import { Routes, Route } from 'react-router-dom'
+import { Route, Routes } from 'react-router-dom'
 import Footer from './components/Footer'
 
 import Navbar from './components/Navbar'
@@ -16,14 +17,17 @@ const AppContainer = () => {
     <SnackbarProvider>
       <ScrollToTop />
       <Navbar />
-      <Routes>
-        <Route path='/' element={<Homepage />} />
-        <Route path='/store' element={<Products />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/store/product/:productId' element={<SingleProduct />} />
-        <Route path='/checkout' element={<Checkout />} />
-        <Route path='/success' element={<SuccessfulPurchase />} />
-      </Routes>
+      <Box minHeight={'100vh'} marginTop={'-80px'}>
+        <Routes>
+          <Route path='/' element={<Homepage />} />
+          <Route path='/store' element={<Products />} />
+          <Route path='/contact' element={<Contact />} />
+          <Route path='/store/product/:productId' element={<SingleProduct />} />
+          <Route path='/checkout' element={<Checkout />} />
+          <Route path='/success' element={<SuccessfulPurchase />} />
+        </Routes>
+      </Box>
+
       <Footer />
     </SnackbarProvider>
   )

@@ -1,14 +1,27 @@
 import { Box, Button, Stack, TextField, Typography } from '@mui/material'
+import { IMAGES } from '../constants'
 
 const Contact = () => {
   return (
     <Box
-      bgcolor={'branding.mushroom'}
       display={'flex'}
       justifyContent={'center'}
       alignItems={'center'}
+      height={'100vh'}
+      sx={{
+        backgroundImage: `url(${IMAGES.ctaSection})`,
+        backgroundPosition: 'center',
+        backgroundRepeat: 'no-repeat',
+        backgroundSize: 'cover',
+      }}
     >
-      <Stack spacing={2} py={20} width={700}>
+      <Stack
+        spacing={2}
+        p={4}
+        width={700}
+        borderRadius={16}
+        bgcolor={'branding.sunlight'}
+      >
         <Box
           mb={2}
           display={'flex'}

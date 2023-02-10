@@ -1,23 +1,23 @@
-import { Fragment, useState } from 'react'
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
 import {
   Badge,
+  Box,
+  Button,
   Drawer,
   IconButton,
-  Stack,
-  Typography,
-  Box,
-  Tooltip,
-  Button,
   Menu,
   MenuItem,
+  Stack,
+  Tooltip,
+  Typography,
 } from '@mui/material'
-import ShoppingCartIcon from '@mui/icons-material/ShoppingCart'
+import { Fragment, useState } from 'react'
 
-import useStore from '../store'
-import Cart from '../views/Cart'
+import { useTranslation } from 'react-i18next'
 import { useLocation, useNavigate } from 'react-router'
 import { ICONS, LOGOS } from '../constants'
-import { useTranslation } from 'react-i18next'
+import useStore from '../store'
+import Cart from '../views/Cart'
 
 const Navbar = () => {
   const { itemsInCart } = useStore()
@@ -47,10 +47,12 @@ const Navbar = () => {
         height={40}
         justifyContent={'space-between'}
         p={2}
-        position={'absolute'}
+        position={'sticky'}
+        zIndex={2}
+        top={0}
         left={0}
         right={0}
-        bgcolor={!inHomepage ? 'branding.pomegranate' : 'none'}
+        sx={{ backdropFilter: 'blur(6px)' }}
       >
         <Box
           color={'common.white'}
@@ -63,27 +65,29 @@ const Navbar = () => {
             alignItems={'center'}
             display={'flex'}
             justifyContent={'center'}
-            height={'56px'}
-            width={'56px'}
+            height={'32px'}
+            width={'32px'}
             sx={{
-              backgroundImage: `url(${
-                inHomepage ? LOGOS.stamp.soilFilled : LOGOS.stamp.mushroomFilled
-              })`,
+              backgroundImage: `url(${LOGOS.stamp.pomegranate})`,
               backgroundPosition: 'center',
               backgroundRepeat: 'no-repeat',
               backgroundSize: 'cover',
             }}
           />
           <Typography
-            color={`branding.${inHomepage ? 'soil' : 'mushroom'}`}
+            color={`branding.pomegranate`}
             ml={1}
-            variant={'subtitle1'}
-            fontSize={28}
+            variant={'h4'}
+            fontSize={20}
           >
             SEED AND SPORE
           </Typography>
         </Box>
-        <Box alignItems={'center'} color={'branding.mushroom'} display={'flex'}>
+        <Box
+          alignItems={'center'}
+          color={'branding.pomegranate'}
+          display={'flex'}
+        >
           <Button
             onClick={handleClick}
             color={'inherit'}
@@ -100,7 +104,11 @@ const Navbar = () => {
             <MenuItem onClick={() => handleLocaleSelect('pt')}>PT</MenuItem>
           </Menu>
           {!inHomepage && !inContactPage ? (
-            <IconButton color={'inherit'} onClick={() => setCartOpen(true)}>
+            <IconButton
+              color={'inherit'}
+              onClick={() => setCartOpen(true)}
+              sx={{ marginRight: 2 }}
+            >
               <Badge badgeContent={itemsInCart}>
                 <ShoppingCartIcon />
               </Badge>

@@ -1,28 +1,28 @@
 const typography = {
   h1: {
-    fontFamily: 'Oswald',
+    fontFamily: 'Rubik',
     fontSize: 64,
-    fontWeight: 900,
+    fontWeight: 500,
   },
   h2: {
-    fontFamily: 'Oswald',
+    fontFamily: 'Rubik',
     fontSize: 48,
-    fontWeight: 900,
+    fontWeight: 400,
   },
   h3: {
-    fontFamily: 'Oswald',
+    fontFamily: 'Rubik',
     fontSize: 32,
-    fontWeight: 900,
+    fontWeight: 500,
   },
   h4: {
-    fontFamily: 'Be Vietnam Pro',
+    fontFamily: 'Montserrat',
     fontSize: 20,
     fontWeight: 500,
   },
   subtitle1: {
-    fontFamily: 'Oswald',
+    fontFamily: 'Rubik',
     fontSize: 20,
-    fontWeight: 700,
+    fontWeight: 400,
   },
   body1: {
     fontFamily: 'Be Vietnam Pro',

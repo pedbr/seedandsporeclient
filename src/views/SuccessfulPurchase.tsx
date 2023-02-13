@@ -13,7 +13,6 @@ const SuccessfulPurchase = () => {
   const {
     currentOrder,
     resetCart,
-
     orderFullName,
     orderEmail,
     orderPhoneNumber,
@@ -84,7 +83,7 @@ const SuccessfulPurchase = () => {
   const getBody = () => {
     switch (paymentStatus) {
       case 'succeeded':
-        return 'Thank you so much for your purchase, it has now been confirmed! You will receive a confirmation email in your inbox! We are now preparing your order and will keep you updated along the way. If you have any questions please reach out through our contact form or send us an email at seedandspore@proton.me'
+        return 'Thank you so much for your purchase, it has now been confirmed! You will receive a confirmation email in your inbox! Remember to check your junk or spam folder! We are now preparing your order and will keep you updated along the way. If you have any questions please reach out through our contact form or send us an email at seedandspore@proton.me'
 
       case 'processing':
         return 'We are now processing your payment please do not leave this page!'

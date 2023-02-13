@@ -233,7 +233,10 @@ const SingleProduct = () => {
                       'This product was added to your cart! 🎉 ',
                       {
                         variant: 'success',
-                        anchorOrigin: { horizontal: 'center', vertical: 'top' },
+                        anchorOrigin: {
+                          horizontal: 'center',
+                          vertical: 'bottom',
+                        },
                       }
                     )
                   }}

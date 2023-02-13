@@ -10,6 +10,7 @@ import { api } from '../api'
 import EmptyState from '../components/EmptyState'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useStore from '../store'
+import { getShippingCost } from '../utils'
 
 interface CartProps {
   onClose: () => void
@@ -22,6 +23,7 @@ const Cart = ({ onClose }: CartProps) => {
     removeFromCart,
     cartTotalPrice,
     setCurrentOrder,
+    cartTotalWeight,
   } = useStore()
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -29,12 +31,18 @@ const Cart = ({ onClose }: CartProps) => {
 
   const isCartEmpty = !Boolean(cartItems.length)
 
+  const shippingCost = getShippingCost(cartTotalWeight, cartTotalPrice)
+
+  const totalOrderCost = cartTotalPrice + shippingCost
+
   const handleCheckout = async () => {
     setIsLoading(true)
     try {
       const { data } = await api.post('/orders', {
         products: cartItems,
-        totalPrice: cartTotalPrice,
+        productsPrice: cartTotalPrice,
+        shippingCost,
+        totalPrice: totalOrderCost,
       })
       if (data?.data) {
         setCurrentOrder(data.data)
@@ -126,6 +134,9 @@ const Cart = ({ onClose }: CartProps) => {
                       variant={'caption'}
                     >
                       {item.description}
+                    </Typography>
+                    <Typography variant={'body2'}>
+                      Cost/Uni: {item.price} €
                     </Typography>
                     <Typography variant={'body2'}>
                       Quantity: {item.quantity}

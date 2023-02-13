@@ -128,6 +128,9 @@ const Checkout = () => {
                           {item.description}
                         </Typography>
                         <Typography variant={'body2'}>
+                          Cost/Uni: {item.price} €
+                        </Typography>
+                        <Typography variant={'body2'}>
                           Quantity: {item.quantity}
                         </Typography>
                       </Stack>

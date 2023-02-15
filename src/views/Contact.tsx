@@ -13,7 +13,7 @@ interface ContactValues {
 }
 
 const Contact = () => {
-  const { handleSubmit, register } = useForm<ContactValues>()
+  const { handleSubmit, register, reset } = useForm<ContactValues>()
   const { enqueueSnackbar } = useSnackbar()
 
   const mutation = useMutation((values: ContactValues) => {
@@ -27,16 +27,21 @@ const Contact = () => {
   const onSubmit = async (values: ContactValues) => {
     try {
       await mutation.mutateAsync(values)
-      enqueueSnackbar(
-        'Your message has been sent! We will get back to you shortly',
-        {
-          variant: 'success',
-          anchorOrigin: {
-            horizontal: 'center',
-            vertical: 'bottom',
-          },
-        }
-      )
+      if (mutation.isSuccess) {
+        reset()
+        enqueueSnackbar(
+          'Your message has been sent! We will get back to you shortly',
+          {
+            variant: 'success',
+            anchorOrigin: {
+              horizontal: 'center',
+              vertical: 'bottom',
+            },
+          }
+        )
+      } else {
+        throw new Error()
+      }
     } catch (error) {
       enqueueSnackbar(
         'There was an error sending this message, please try again',

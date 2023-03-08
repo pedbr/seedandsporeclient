@@ -4,7 +4,8 @@
     "subHeader": "- PRODUÇÃO DE COGUMELOS NO PORTO -",
     "aboutHeader": "OS CORAÇŌES POR TRÁS DESTE PROJECTO",
     "aboutText": "Começamos a cultivar os Cogumelos Gourmet Oyster porque queríamos aprender a nos alimentar de forma mais independente, saudável e fornecer comida saborosa à nossa comunidade. Os Cogumelos Ostra cruzaram o nosso caminho e ficamos fascinados com seu potencial de saúde. Além disso, pudemos começar a cultivá-los no nosso pequeno espaço vertical de garagem no Porto. Quem somos nós? Wiebke e Diogo, um casal português-alemão com formação em paisagismo e engenharia aeronáutica. Em outubro de 2021, iniciamos as nossas primeiras experiências com Cogumelos e, a partir de Abril de 2022, cultivamos consistentemente nas nossas salas de frutificação auto-construídas na nossa garagem. Agora somos agricultores de Cogumelos e agradecidos por poder trabalhar todos os dias com seres tão fascinantes.",
-    "CTAButton": "CONHEÇA OS NOSSOS PRODUCTOS"
+    "CTAButton": "CONHEÇA OS NOSSOS PRODUCTOS",
+    "aboutContact": "Contacto"
   },
   "navbar": {
     "contact": "Contacto",
@@ -37,7 +38,8 @@
     "contactUs": "Contacte-nos!",
     "quantity": "Quantidade",
     "successfullyAddedToCart": "Este producto foi adicionado ao seu carrinho! 🎉",
-    "addToCart": "Adicionar ao carrinho"
+    "addToCart": "Adicionar ao carrinho",
+    "discount": "Promoção"
   },
   "cart": {
     "createOrderError": "Ocorreu um erro ao criar a sua encomenda",

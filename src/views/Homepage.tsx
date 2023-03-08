@@ -89,7 +89,7 @@ const Homepage = () => {
               </Typography>
               <Button
                 onClick={() => navigate('contact')}
-                label={'CONTACT'}
+                label={t('homepage.aboutContact')}
                 color={'black'}
               />
             </Stack>

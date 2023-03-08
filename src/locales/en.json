@@ -4,7 +4,8 @@
     "subHeader": "- OPORTO URBAN MUSHROOM FARM -",
     "aboutHeader": "THE HEARTS BEHIND THIS PROJECT",
     "aboutText": "We started growing Gourmet Oyster Mushrooms because we wanted to learn how to feed ourselves in a more independent, healthy way and provide tasty local food for our neighborhood. Oyster Mushrooms crossed our path and we were fascinated by their health potential. Additionally, we were able to start growing them in our small vertical space in the garage in Porto. Who are we? Wiebke and Diogo, a Portuguese-German couple with backgrounds in landscaping and aeronautical engineering. In October 2021, we started our first experiences with Mushrooms and from April 2022, we consistently grew them in our self-built fruiting rooms in the garage. Now we are Mushroom farmers and grateful to be able to work every day with such fascinating beings.",
-    "CTAButton": "KNOW OUR PRODUCTS"
+    "CTAButton": "KNOW OUR PRODUCTS",
+    "aboutContact": "Contact"
   },
   "navbar": {
     "contact": "Contact",
@@ -37,7 +38,8 @@
     "contactUs": "Contact us!",
     "quantity": "Quantity",
     "successfullyAddedToCart": "This product was added to your cart! 🎉",
-    "addToCart": "Add to cart"
+    "addToCart": "Add to cart",
+    "discount": "Discount"
   },
   "cart": {
     "createOrderError": "There was an error creating your order",

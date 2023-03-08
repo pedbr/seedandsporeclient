@@ -21,6 +21,7 @@ import useFetchById from '../hooks/useFetchById'
 import useStore from '../store'
 import { CartItem } from '../types/cartItem'
 import { ProductType } from '../types/products'
+import { getActualPrice } from '../utils'
 
 const SingleProduct = () => {
   const { productId } = useParams()
@@ -79,13 +80,16 @@ const SingleProduct = () => {
       </Box>
     )
 
-  const { name, weight, description, price, id, imageUrl, stock } = data
+  const { name, weight, description, price, id, imageUrl, stock, discount } =
+    data
 
   const currentItemInCart = cartItems.find((i: CartItem) => i.id === id)
 
   const currentlyAvailableStock = stock - (currentItemInCart?.quantity || 0)
 
-  const itemOutOfStock = Number(data?.stock) === 0
+  const itemOutOfStock = Number(data.stock) === 0
+
+  const isDiscountActive = data.discount > 0
 
   const handleAddQuantity = () => setQuantity(quantity + 1)
   const handleReduceQuantity = () => setQuantity(quantity - 1)
@@ -128,15 +132,28 @@ const SingleProduct = () => {
               </Box>
             )}
             <Typography color={'branding.soil'} variant={'h2'}>
-              {data?.name[currentLocale]}
+              {name[currentLocale]}
             </Typography>
             <Stack>
               <Typography variant={'button'} fontSize={'12px'}>
                 {t('store.price')}
               </Typography>
-              <Typography variant={'body1'} fontSize={'24px'}>{`${
-                data?.price
-              } €/${t('store.unit')}`}</Typography>
+              <Typography
+                sx={{
+                  textDecoration: isDiscountActive ? 'line-through' : 'none',
+                }}
+                variant={'body1'}
+                fontSize={'24px'}
+              >{`${price} €/${t('store.unit')}`}</Typography>
+              {isDiscountActive && (
+                <Typography
+                  variant={'body1'}
+                  fontSize={'24px'}
+                  color={'success.main'}
+                >{`${getActualPrice(price, discount)} €/${t(
+                  'store.unit'
+                )}`}</Typography>
+              )}
             </Stack>
 
             <Stack>
@@ -225,7 +242,7 @@ const SingleProduct = () => {
                       id,
                       name: name[currentLocale],
                       description: description[currentLocale],
-                      price,
+                      price: getActualPrice(price, discount),
                       imageUrl,
                       quantity: Number(quantity),
                       weight,

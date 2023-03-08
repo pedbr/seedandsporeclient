@@ -58,6 +58,7 @@ const Products = () => {
                 price={product.price}
                 imageUrl={product.imageUrl}
                 stock={product.stock}
+                discount={product.discount}
               />
             </Grid>
           ))

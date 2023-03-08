@@ -11,6 +11,13 @@ export const getShippingCost = (
   return 0
 }
 
+export const getActualPrice = (price: number, discount: number) => {
+  if (discount > 0) {
+    return price * (1 - discount / 100)
+  }
+  return price
+}
+
 // - Up to 3kg -> 7EUR
 // - Up to 9kg -> 9EUR
 // - Up to 12kg -> 13EUR

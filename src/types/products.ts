@@ -15,4 +15,5 @@ export interface ProductType {
   categoryId?: number
   campaignId?: number
   weight: number
+  discount: number
 }

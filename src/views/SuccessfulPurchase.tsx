@@ -1,6 +1,7 @@
 import { Box, Button, Grid, Stack, Typography } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import { useEffect } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 
 import { api } from '../api'
@@ -22,6 +23,7 @@ const SuccessfulPurchase = () => {
     orderBillingAddress,
   } = useStore()
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const paymentStatus = searchParams.get('redirect_status')
 
@@ -67,32 +69,32 @@ const SuccessfulPurchase = () => {
   const getHeader = () => {
     switch (paymentStatus) {
       case 'succeeded':
-        return 'Payment succeeded!'
+        return t('checkout.succeeded.header')
 
       case 'processing':
-        return 'Your payment is processing.'
+        return t('checkout.processing.header')
 
       case 'requires_payment_method':
-        return 'Your payment was not successful, please try again.'
+        return t('checkout.requirePayment.header')
 
       default:
-        return 'Something went wrong.'
+        return t('checkout.default.header')
     }
   }
 
   const getBody = () => {
     switch (paymentStatus) {
       case 'succeeded':
-        return 'Thank you so much for your purchase, it has now been confirmed! You will receive a confirmation email in your inbox! Remember to check your junk or spam folder! We are now preparing your order and will keep you updated along the way. If you have any questions please reach out through our contact form or send us an email at seedandspore@proton.me'
+        return t('checkout.succeeded.body')
 
       case 'processing':
-        return 'We are now processing your payment please do not leave this page!'
+        return t('checkout.processing.body')
 
       case 'requires_payment_method':
-        return 'There was a problem with your payment, please go back and try again or change your payment method - no money was collected from you yet!'
+        return t('checkout.requirePayment.body')
 
       default:
-        return 'Oops! It seems that a problem ocurred! Please try again - no money was collected from you yet!'
+        return t('checkout.default.body')
     }
   }
 
@@ -135,12 +137,12 @@ const SuccessfulPurchase = () => {
                 variant={'outlined'}
                 onClick={() => navigate('/contact', { replace: true })}
               >
-                Contact Us!
+                {t('checkout.contactUs')}
               </Button>
             </Grid>
             <Grid item xs={12} md={6}>
               <Button variant={'contained'} onClick={() => navigate('/')}>
-                Go back to homepage
+                {t('checkout.backHome')}
               </Button>
             </Grid>
           </Grid>

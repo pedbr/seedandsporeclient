@@ -4,6 +4,7 @@ import { LoadingButton } from '@mui/lab'
 import { Box, IconButton, Stack, Typography } from '@mui/material'
 import { useSnackbar } from 'notistack'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router-dom'
 
 import { api } from '../api'
@@ -28,6 +29,7 @@ const Cart = ({ onClose }: CartProps) => {
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
   const [isLoading, setIsLoading] = useState(false)
+  const { t } = useTranslation()
 
   const isCartEmpty = !Boolean(cartItems.length)
 
@@ -52,7 +54,7 @@ const Cart = ({ onClose }: CartProps) => {
         throw new Error()
       }
     } catch (error) {
-      enqueueSnackbar('There was an error creating your order', {
+      enqueueSnackbar(t('cart.createOrderError'), {
         variant: 'error',
       })
       console.log(error)
@@ -71,7 +73,7 @@ const Cart = ({ onClose }: CartProps) => {
         <IconButton onClick={onClose}>
           <ArrowBackIcon />
         </IconButton>
-        <Typography>Shopping cart</Typography>
+        <Typography>{t('cart.header')}</Typography>
       </Stack>
       <Stack height={'95%'} justifyContent={'space-between'}>
         <Stack my={2} spacing={2} height={'100%'}>
@@ -136,10 +138,10 @@ const Cart = ({ onClose }: CartProps) => {
                       {item.description}
                     </Typography>
                     <Typography variant={'body2'}>
-                      Cost/Uni: {item.price} €
+                      {t('cart.costUni')} {item.price} €
                     </Typography>
                     <Typography variant={'body2'}>
-                      Quantity: {item.quantity}
+                      {t('cart.quantity')} {item.quantity}
                     </Typography>
                   </Stack>
                 </Stack>
@@ -158,15 +160,15 @@ const Cart = ({ onClose }: CartProps) => {
               alignItems={'center'}
             >
               <EmptyState
-                header='Your cart is empty'
-                body='Go through our store items and add them to your cart!'
+                header={t('cart.emptyStateHeader')}
+                body={t('cart.emptyStateBody')}
               />
             </Box>
           )}
         </Stack>
         <Stack>
           <Stack direction={'row'} justifyContent={'space-between'} my={2}>
-            <Typography variant='body2'>Total:</Typography>
+            <Typography variant='body2'>{t('cart.total')}</Typography>
             <Typography variant='body2'>{cartTotalPrice} EUR</Typography>
           </Stack>
           <Stack direction={'row'} justifyContent={'space-between'}>
@@ -176,7 +178,7 @@ const Cart = ({ onClose }: CartProps) => {
               onClick={resetCart}
               variant={'outlined'}
             >
-              Empty Cart
+              {t('cart.emptyCart')}
             </LoadingButton>
             <LoadingButton
               loading={isLoading}
@@ -184,7 +186,7 @@ const Cart = ({ onClose }: CartProps) => {
               onClick={handleCheckout}
               variant={'contained'}
             >
-              Checkout
+              {t('cart.checkout')}
             </LoadingButton>
           </Stack>
         </Stack>

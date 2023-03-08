@@ -1,4 +1,5 @@
 import { Box, Grid, TextField, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import useStore from '../store'
 
 const UserInfoElement = () => {
@@ -18,15 +19,17 @@ const UserInfoElement = () => {
     orderBillingAddress,
     setOrderBillingAddress,
   } = useStore()
+  const { t } = useTranslation()
+
   return (
     <Grid container mb={2}>
       <Grid item xs={12} mb={2}>
-        <Typography>Personal Information</Typography>
+        <Typography>{t('checkout.personalInfo')}</Typography>
       </Grid>
 
       <Grid item xs={12} mb={2}>
         <TextField
-          label={'Full Name'}
+          label={t('checkout.fullName')}
           defaultValue={orderFullName}
           fullWidth
           onChange={(e) => setOrderFullName(e.target.value)}
@@ -35,7 +38,7 @@ const UserInfoElement = () => {
 
       <Grid item xs={12} md={8} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
-          label={'Email'}
+          label={t('checkout.email')}
           defaultValue={orderEmail}
           fullWidth
           onChange={(e) => setOrderEmail(e.target.value)}
@@ -44,7 +47,7 @@ const UserInfoElement = () => {
 
       <Grid item xs={12} md={4} mb={2}>
         <TextField
-          label={'Phone number'}
+          label={t('checkout.phone')}
           defaultValue={orderPhoneNumber}
           fullWidth
           onChange={(e) => setOrderPhoneNumber(e.target.value)}
@@ -52,17 +55,12 @@ const UserInfoElement = () => {
       </Grid>
       <Grid item xs={12} mb={2}>
         <Box p={2} bgcolor={'branding.mushroom'} borderRadius={'12px'}>
-          <Typography variant='body2'>
-            IMPORTANT NOTE: As of now, we are only able to ship to Portugal.
-            We're working hard to establish the best logistics possible so we
-            can ship our products abroad in a way that they arrive to you in the
-            best conditions.
-          </Typography>
+          <Typography variant='body2'>{t('checkout.importantNote')}</Typography>
         </Box>
       </Grid>
       <Grid item xs={12} mb={2}>
         <TextField
-          label={'Delivery Address'}
+          label={t('checkout.deliveryAddress')}
           defaultValue={orderDeliveryAddress}
           fullWidth
           onChange={(e) => setOrderDeliveryAddress(e.target.value)}
@@ -71,7 +69,7 @@ const UserInfoElement = () => {
 
       <Grid item xs={12} md={3} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
-          label={'Post Code'}
+          label={t('checkout.postCode')}
           defaultValue={orderDeliveryPostCode}
           fullWidth
           onChange={(e) => setOrderDeliveryPostCode(e.target.value)}
@@ -80,7 +78,7 @@ const UserInfoElement = () => {
 
       <Grid item xs={12} md={5} mb={2} pr={{ xs: 0, md: 2 }}>
         <TextField
-          label={'Location'}
+          label={t('checkout.location')}
           defaultValue={orderDeliveryLocation}
           fullWidth
           onChange={(e) => setOrderDeliveryLocation(e.target.value)}
@@ -88,7 +86,7 @@ const UserInfoElement = () => {
       </Grid>
       <Grid item xs={12} md={4} mb={2}>
         <TextField
-          label={'Country'}
+          label={t('checkout.country')}
           defaultValue={'Portugal'}
           value={'Portugal'}
           fullWidth
@@ -98,7 +96,7 @@ const UserInfoElement = () => {
       </Grid>
       <Grid item xs={12} mb={2}>
         <TextField
-          label={'Billing Address'}
+          label={t('checkout.billingAddress')}
           defaultValue={orderBillingAddress}
           fullWidth
           onChange={(e) => setOrderBillingAddress(e.target.value)}

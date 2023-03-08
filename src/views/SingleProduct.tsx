@@ -27,7 +27,7 @@ const SingleProduct = () => {
   const { addToCart, cartItems } = useStore()
   const navigate = useNavigate()
   const [quantity, setQuantity] = useState(1)
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
   const { enqueueSnackbar } = useSnackbar()
 
   const currentLocale: string = useMemo(() => i18n.language, [i18n.language])
@@ -101,7 +101,7 @@ const SingleProduct = () => {
             startIcon={<ArrowBackIcon />}
             sx={{ marginLeft: 6.5 }}
           >
-            Back to store
+            {t('store.backButton')}
           </Button>
         </Grid>
         <Grid item xs={12} lg={4} display={'flex'} justifyContent={'center'}>
@@ -120,7 +120,11 @@ const SingleProduct = () => {
           <Stack spacing={3}>
             {itemOutOfStock && (
               <Box>
-                <Chip label='Out of stock' color='error' size='small' />
+                <Chip
+                  label={t('store.outOfStock')}
+                  color='error'
+                  size='small'
+                />
               </Box>
             )}
             <Typography color={'branding.soil'} variant={'h2'}>
@@ -128,12 +132,11 @@ const SingleProduct = () => {
             </Typography>
             <Stack>
               <Typography variant={'button'} fontSize={'12px'}>
-                Price
+                {t('store.price')}
               </Typography>
-              <Typography
-                variant={'body1'}
-                fontSize={'24px'}
-              >{`${data?.price} €/Unit`}</Typography>
+              <Typography variant={'body1'} fontSize={'24px'}>{`${
+                data?.price
+              } €/${t('store.unit')}`}</Typography>
             </Stack>
 
             <Stack>
@@ -142,7 +145,7 @@ const SingleProduct = () => {
                 fontSize={'12px'}
                 color={'text.primary'}
               >
-                Description
+                {t('store.description')}
               </Typography>
               <Typography variant={'body1'}>
                 {data?.description[currentLocale]}
@@ -160,9 +163,7 @@ const SingleProduct = () => {
                 >
                   <Grid item xs={12} lg={8}>
                     <Typography width={'400px'} variant={'caption'} mr={2}>
-                      This product is currently out of stock, reach out to us to
-                      let us know about your interest and we will do our best to
-                      re-stock as soon as possible
+                      {t('store.outOfStockText')}
                     </Typography>
                   </Grid>
                   <Grid
@@ -177,7 +178,7 @@ const SingleProduct = () => {
                       onClick={() => navigate('/contact')}
                       sx={{ marginTop: { xs: 2, lg: 0 } }}
                     >
-                      Contact us!
+                      {t('store.contactUs')}
                     </Button>
                   </Grid>
                 </Grid>
@@ -188,7 +189,7 @@ const SingleProduct = () => {
                   <TextField
                     InputLabelProps={{ shrink: true }}
                     inputProps={{ readOnly: true }}
-                    label={'Quantity'}
+                    label={t('store.quantity')}
                     value={String(quantity)}
                     disabled={currentlyAvailableStock === 0}
                     sx={{
@@ -229,20 +230,17 @@ const SingleProduct = () => {
                       quantity: Number(quantity),
                       weight,
                     })
-                    enqueueSnackbar(
-                      'This product was added to your cart! 🎉 ',
-                      {
-                        variant: 'success',
-                        anchorOrigin: {
-                          horizontal: 'center',
-                          vertical: 'bottom',
-                        },
-                      }
-                    )
+                    enqueueSnackbar(t('store.successfullyAddedToCart'), {
+                      variant: 'success',
+                      anchorOrigin: {
+                        horizontal: 'center',
+                        vertical: 'bottom',
+                      },
+                    })
                   }}
                   size='small'
                 >
-                  Add to cart
+                  {t('store.addToCart')}
                 </Button>
               </Stack>
             )}

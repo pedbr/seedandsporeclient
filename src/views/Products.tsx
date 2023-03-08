@@ -10,7 +10,7 @@ import useFetchData from '../hooks/useFetchData'
 import { ProductType } from '../types/products'
 
 const Products = () => {
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const currentLocale: string = useMemo(() => i18n.language, [i18n.language])
 
@@ -70,10 +70,8 @@ const Products = () => {
           justifyContent={'center'}
         >
           <EmptyState
-            header='Our store is currently empty'
-            body={
-              'We are preparing cool and exciting stuff for you, stay tunned!'
-            }
+            header={t('store.emptyStateHeader')}
+            body={t('store.emptyStateBody')}
           />
         </Grid>
       )}

@@ -4,6 +4,7 @@ import { loadStripe } from '@stripe/stripe-js'
 import { useEffect, useState } from 'react'
 
 import ArrowBackIcon from '@mui/icons-material/ArrowBack'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { api } from '../api'
 import CheckoutForm from '../components/CheckoutForm'
@@ -22,6 +23,7 @@ const Checkout = () => {
     useStore()
   const [clientSecret, setClientSecret] = useState('')
   const navigate = useNavigate()
+  const { t } = useTranslation()
 
   const shippingCost = getShippingCost(cartTotalWeight, cartTotalPrice)
 
@@ -63,19 +65,19 @@ const Checkout = () => {
           onClick={() => navigate('/store')}
         >
           <ArrowBackIcon sx={{ marginRight: 1 }} />
-          Back to store
+          {t('checkout.backToStore')}
         </Button>
       </Box>
       <Box display={'flex'} justifyContent={'center'}>
-        <Typography variant={'h2'}>Checkout</Typography>
+        <Typography variant={'h2'}>{t('checkout.checkout')}</Typography>
       </Box>
 
       <UserInfoElement />
       <Box p={2}>
-        <Typography>Payment Details</Typography>
+        <Typography>{t('checkout.paymentDetails')}</Typography>
         <Stack bgcolor={'ghostwhite'} p={2}>
           <Typography variant={'caption'} mb={1}>
-            Products
+            {t('checkout.products')}
           </Typography>
           <Grid container spacing={2} mb={3}>
             {cartItems.map((item) => (
@@ -128,10 +130,10 @@ const Checkout = () => {
                           {item.description}
                         </Typography>
                         <Typography variant={'body2'}>
-                          Cost/Uni: {item.price} €
+                          {t('checkout.costUni')} {item.price} €
                         </Typography>
                         <Typography variant={'body2'}>
-                          Quantity: {item.quantity}
+                          {t('checkout.quantity')} {item.quantity}
                         </Typography>
                       </Stack>
                     </Grid>
@@ -141,12 +143,14 @@ const Checkout = () => {
             ))}
           </Grid>
           <Typography variant={'caption'} mt={2}>
-            Shipping
+            {t('checkout.shipping')}
           </Typography>
-          <Typography mb={3}>Total shipping cost: {shippingCost}€</Typography>
+          <Typography mb={3}>
+            {t('checkout.shippingCost')} {shippingCost}€
+          </Typography>
           <Box p={2} display={'flex'} justifyContent={'center'}>
             <Typography variant={'h3'}>
-              Total to pay: {totalOrderCost}€
+              {t('checkout.total')} {totalOrderCost}€
             </Typography>
           </Box>
         </Stack>
@@ -158,16 +162,7 @@ const Checkout = () => {
         </Elements>
       )}
       <Box p={4}>
-        <Typography variant={'caption'}>
-          By clicking 'Pay Now' you're accepting the terms and conditions, Lorem
-          ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-          tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim
-          veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex
-          ea commodo consequat. Duis aute irure dolor in reprehenderit in
-          voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-          sint occaecat cupidatat non proident, sunt in culpa qui officia
-          deserunt mollit anim id est laborum.
-        </Typography>
+        <Typography variant={'caption'}>{t('checkout.accepting')}</Typography>
       </Box>
     </Stack>
   )

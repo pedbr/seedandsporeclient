@@ -1,10 +1,12 @@
 import { Box, IconButton, Stack, Typography } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 
 import { ICONS, LOGOS } from '../constants'
 
 const Footer = () => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   return (
     <Box
       alignItems={'center'}
@@ -96,13 +98,13 @@ const Footer = () => {
             },
           }}
         >
-          Terms and Conditions
+          {t('footer.termsAndConditions')}
         </Typography>
         <Typography variant={'caption'} color={'branding.mushroom'}>
           Seed and Spore 2023
         </Typography>
         <Typography variant={'caption'} color={'branding.mushroom'}>
-          All Rights Reserved
+          {t('footer.allRightsReserved')}
         </Typography>
       </Stack>
     </Box>

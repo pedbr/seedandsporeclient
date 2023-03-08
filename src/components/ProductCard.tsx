@@ -7,6 +7,7 @@ import {
   Chip,
   Typography,
 } from '@mui/material'
+import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 
@@ -26,6 +27,7 @@ const ProductCard = ({
   stock,
 }: ProductCardProps) => {
   const navigate = useNavigate()
+  const { t } = useTranslation()
   const itemOutOfStock = Number(stock) === 0
 
   return (
@@ -40,7 +42,7 @@ const ProductCard = ({
         <CardContent>
           {itemOutOfStock && (
             <Box mb={1}>
-              <Chip label='Out of stock' color='error' size='small' />
+              <Chip label={t('store.outOfStock')} color='error' size='small' />
             </Box>
           )}
           <Typography gutterBottom variant='h4' component='div'>

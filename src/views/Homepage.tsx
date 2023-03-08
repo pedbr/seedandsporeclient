@@ -41,7 +41,7 @@ const Homepage = () => {
             mb={2}
             variant='h1'
           >
-            {t('homepageHeader')}
+            {t('homepage.header')}
           </Typography>
           <Typography
             color={'branding.pomegranate'}
@@ -49,7 +49,7 @@ const Homepage = () => {
             fontWeight={500}
             textAlign={'center'}
           >
-            {t('homepageSubheader')}
+            {t('homepage.subHeader')}
           </Typography>
         </Box>
       </Box>
@@ -82,10 +82,10 @@ const Homepage = () => {
           <Grid item xs={12} md={7}>
             <Stack>
               <Typography variant={'h2'} mb={2}>
-                {t('homepageAboutHeader')}
+                {t('homepage.aboutHeader')}
               </Typography>
               <Typography variant={'body1'} mb={2}>
-                {t('homepageAboutText')}
+                {t('homepage.aboutText')}
               </Typography>
               <Button
                 onClick={() => navigate('contact')}
@@ -111,7 +111,7 @@ const Homepage = () => {
         }}
       >
         <Button
-          label={'KNOW OUR PRODUCTS'}
+          label={t('homepage.CTAButton')}
           color={'black'}
           customColor={'branding.pomegranate'}
           onClick={() => navigate('/store')}

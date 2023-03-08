@@ -3,6 +3,7 @@ import { Box, Stack, TextField, Typography } from '@mui/material'
 import { useMutation } from '@tanstack/react-query'
 import { useSnackbar } from 'notistack'
 import { useForm } from 'react-hook-form'
+import { useTranslation } from 'react-i18next'
 import { api } from '../api'
 import { IMAGES } from '../constants'
 
@@ -15,6 +16,7 @@ interface ContactValues {
 const Contact = () => {
   const { handleSubmit, register, reset } = useForm<ContactValues>()
   const { enqueueSnackbar } = useSnackbar()
+  const { t } = useTranslation()
 
   const mutation = useMutation((values: ContactValues) => {
     return api.post(`/emails/contact`, {
@@ -29,30 +31,24 @@ const Contact = () => {
       await mutation.mutateAsync(values)
       if (mutation.isSuccess) {
         reset()
-        enqueueSnackbar(
-          'Your message has been sent! We will get back to you shortly',
-          {
-            variant: 'success',
-            anchorOrigin: {
-              horizontal: 'center',
-              vertical: 'bottom',
-            },
-          }
-        )
-      } else {
-        throw new Error()
-      }
-    } catch (error) {
-      enqueueSnackbar(
-        'There was an error sending this message, please try again',
-        {
-          variant: 'error',
+        enqueueSnackbar(t('contactForm.success'), {
+          variant: 'success',
           anchorOrigin: {
             horizontal: 'center',
             vertical: 'bottom',
           },
-        }
-      )
+        })
+      } else {
+        throw new Error()
+      }
+    } catch (error) {
+      enqueueSnackbar(t('contactForm.error'), {
+        variant: 'error',
+        anchorOrigin: {
+          horizontal: 'center',
+          vertical: 'bottom',
+        },
+      })
     }
   }
 
@@ -92,21 +88,21 @@ const Contact = () => {
             justifyContent={'center'}
             alignItems={'center'}
           >
-            <Typography variant={'h2'}>We want to hear from you!</Typography>
+            <Typography variant={'h2'}>{t('contactForm.header')}</Typography>
           </Box>
           <TextField
             fullWidth
-            label={'Name'}
+            label={t('contactForm.name')}
             {...register('name', { required: true })}
           />
           <TextField
             fullWidth
-            label={'Email'}
+            label={t('contactForm.email')}
             {...register('email', { required: true })}
           />
           <TextField
             fullWidth
-            label={'Message'}
+            label={t('contactForm.message')}
             multiline
             rows={7}
             {...register('message', { required: true })}
@@ -117,7 +113,7 @@ const Contact = () => {
               type={'submit'}
               variant={'contained'}
             >
-              Send
+              {t('contactForm.send')}
             </LoadingButton>
           </Box>
         </Stack>

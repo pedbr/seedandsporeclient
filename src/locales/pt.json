@@ -1,6 +1,173 @@
 {
-  "homepageHeader": "A CUIDAR DA NOSSA COMUNIDADE",
-  "homepageSubheader": "- PRODUÇÃO DE COGUMELOS NO PORTO -",
-  "homepageAboutHeader": "OS CORAÇŌES POR TRÁS DESTE PROJECTO",
-  "homepageAboutText": "Começamos a cultivar os Cogumelos Gourmet Oyster porque queríamos aprender a nos alimentar de forma mais independente, saudável e fornecer comida saborosa local para nosso bairro. Os Cogumelos Ostra cruzaram nosso caminho e ficamos fascinados com seu potencial de saúde. Além disso, pudemos começar a cultivá-los em nosso pequeno espaço vertical na garagem em Porto. Quem somos nós? Wiebke e Diogo, um casal português-alemão com formação em paisagismo e engenharia aeronáutica. Em outubro de 2021, iniciamos nossas primeiras experiências com Cogumelos e, a partir de abril de 2022, cultivamos consistentemente em nossas salas de frutificação auto-construídas na garagem. Agora somos agricultores de Cogumelos e agradecidos por poder trabalhar todos os dias com seres tão fascinantes."
+  "homepage": {
+    "header": "A CUIDAR DA NOSSA COMUNIDADE",
+    "subHeader": "- PRODUÇÃO DE COGUMELOS NO PORTO -",
+    "aboutHeader": "OS CORAÇŌES POR TRÁS DESTE PROJECTO",
+    "aboutText": "Começamos a cultivar os Cogumelos Gourmet Oyster porque queríamos aprender a nos alimentar de forma mais independente, saudável e fornecer comida saborosa à nossa comunidade. Os Cogumelos Ostra cruzaram o nosso caminho e ficamos fascinados com seu potencial de saúde. Além disso, pudemos começar a cultivá-los no nosso pequeno espaço vertical de garagem no Porto. Quem somos nós? Wiebke e Diogo, um casal português-alemão com formação em paisagismo e engenharia aeronáutica. Em outubro de 2021, iniciamos as nossas primeiras experiências com Cogumelos e, a partir de Abril de 2022, cultivamos consistentemente nas nossas salas de frutificação auto-construídas na nossa garagem. Agora somos agricultores de Cogumelos e agradecidos por poder trabalhar todos os dias com seres tão fascinantes.",
+    "CTAButton": "CONHEÇA OS NOSSOS PRODUCTOS"
+  },
+  "navbar": {
+    "contact": "Contacto",
+    "store": "Loja",
+    "reachOut": "Entre em contacto!",
+    "visitShop": "Visite a nossa loja!"
+  },
+  "footer": {
+    "termsAndConditions": "Termos e Condições",
+    "allRightsReserved": "Todos os Direitos Reservados"
+  },
+  "contactForm": {
+    "header": "Entre em contacto connosco!",
+    "name": "Nome",
+    "email": "Email",
+    "message": "Mensagem",
+    "send": "Enviar",
+    "success": "A sua mensagem foi enviada com sucesso! Em breve receberá a nossa resposta.",
+    "error": "Ocorreu um erro ao enviar esta mensagem, por favor tente mais tarde"
+  },
+  "store": {
+    "emptyStateHeader": "A nossa loja está vazia de momento",
+    "emptyStateBody": "Estamos a preparar novidades! Fique atento!",
+    "backButton": "Voltar à loja",
+    "outOfStock": "Esgotado",
+    "price": "Preço",
+    "unit": "Unidade",
+    "description": "Descrição",
+    "outOfStockText": "Este producto está de momento esgotado, entre em contacto connosco e informe-nos do seu interesse! Faremos o melhor para reabastecer o mais cedo possivel!",
+    "contactUs": "Contacte-nos!",
+    "quantity": "Quantidade",
+    "successfullyAddedToCart": "Este producto foi adicionado ao seu carrinho! 🎉",
+    "addToCart": "Adicionar ao carrinho"
+  },
+  "cart": {
+    "createOrderError": "Ocorreu um erro ao criar a sua encomenda",
+    "header": "Carrinho",
+    "costUni": "Custo/Uni: ",
+    "quantity": "Quantidade: ",
+    "emptyStateHeader": "O seu carrinho está vazio",
+    "emptyStateBody": "Vá à nossa loja e adicione artigos ao seu carrinho!",
+    "total": "Total:",
+    "emptyCart": "Esvaziar Carrinho",
+    "checkout": "Checkout"
+  },
+  "checkout": {
+    "payNow": "Pagar agora",
+    "succeeded": {
+      "header": "Pagamento efectuado com sucesso!",
+      "body": "Obrigado pela sua compra, a sua encomenda foi confirmada! Vai receber um email de confirmação! Não se esqueça de verificar a sua caixa de spam! Estamos agora a preparar a sua encomenda e vamos mantê-lo actualizado ao longo do processo. Se tem alguma questão entre em contacto connosco através do nosso formulário ou enviando um email a seedandspore@proton.me"
+    },
+    "processing": {
+      "header": "O seu pagamento está a ser processado.",
+      "body": "Estamos agora a processar o seu pagamento, por favor não saia desta página!"
+    },
+    "requirePayment": {
+      "header": "O seu pagamento não foi efectuado, por favor tente de novo.",
+      "body": "Ocorreu um problema com o seu pagamento, por favor volte ao passo anterior e tente de novo - não foi descontado qualquer valor até agora!"
+    },
+    "default": {
+      "header": "Ocorreu um erro.",
+      "body": "Oops! Parece que ocorreu um erro! Por favor tente de novo - não foi descontado qualquer valor até agora!"
+    },
+    "contactUs": "Contacte-nos!",
+    "backHome": "Voltar para a página inicial",
+    "backToStore": "Voltar à loja",
+    "checkout": "Checkout",
+    "paymentDetails": "Detalhes do Pagamento",
+    "products": "Productos",
+    "costUni": "Custo/Uni: ",
+    "quantity": "Quantidade: ",
+    "shipping": "Envio",
+    "shippingCost": "Custos de envio: ",
+    "total": "Total a pagar: ",
+    "accepting": "Ao clicar 'Pagar agora' está a aceitar os nossos termos e condiçōes, visite o link abaixo:",
+    "personalInfo": "Informação Pessoal",
+    "fullName": "Nome Completo",
+    "email": "Email",
+    "phone": "Numero de Telefone",
+    "importantNote": "NOTA IMPORTANTE: De momento, apenas enviamos encomendas para Portugal. Estamos a trabalhar para estabelecer a melhor logistica possivel para enviar os nossos productos para o estrangeiro de maneira a que possam chegar a si da melhor forma.",
+    "deliveryAddress": "Morada de Entrega",
+    "postCode": "Codigo Postal",
+    "location": "Localidade",
+    "country": "País",
+    "billingAddress": "Morada de Facturação"
+  },
+  "termsAndConditions": {
+    "title": "TERMOS E CONDIÇÕES",
+    "overview": "ANÁLISE GERAL",
+    "overviewBody": "Este website é operado por Seed and Spore. Em todo o site, os termos 'nós', 'nos' e 'nosso' referem-se à Seed and Spore. Seed and Spore oferece este site, incluindo todas as informações, ferramentas e serviços disponíveis a partir deste site ao utilizador, desde que este aceite todos os termos, condições, políticas e avisos aqui indicados. Ao visitar o nosso site e/ou ao comprar-nos algo, o utilizador compromete-se a participar no nosso 'Serviço' e concorda em ficar vinculado aos seguintes termos e condições ('Termos de Serviço', 'Termos'), incluindo aqueles termos e condições adicionais e políticas aqui referidas e/ou disponíveis através de hiperlink. Estes Termos de Serviço aplicam-se a todos os utilizadores do site, incluindo sem limitação os utilizadores que sejam navegadores, vendedores, clientes, comerciantes, e/ou contribuidores de conteúdo. Leia atentamente estes Termos de Serviço antes de aceder ou utilizar o nosso site. Ao aceder ou utilizar qualquer parte do site, o utilizador concorda em ficar vinculado a estes Termos de Serviço. Se o utilizador não concordar com todos os termos e condições deste acordo, então não poderá aceder ao website ou utilizar quaisquer Serviços. Se estes Termos de Serviço forem considerados uma oferta, a aceitação é expressamente limitada aos presentes Termos de Serviço. Quaisquer novas características ou ferramentas que sejam acrescentadas à loja actual também estarão sujeitas aos termos de Serviço. Poderá rever a versão mais actual dos Termos de Serviço em qualquer altura nesta página. Reservamo-nos o direito de actualizar, alterar ou substituir qualquer parte destes Termos de Serviço, colocando actualizações e/ou alterações no nosso website. É da sua responsabilidade verificar esta página periodicamente em busca de alterações. O uso continuado ou acesso ao website após a publicação de quaisquer alterações constitui aceitaçãode tais alterações.",
+    "section1": "SECÇÃO 1 - TERMOS DA LOJA ONLINE",
+    "section1Body": "Ao concordar com estes Termos de Serviço, declara que tem pelo menos a maioridade no seu estado ou província de residência, ou que tem a maioridade no seu estado ou província de residência e deu-nos o seu consentimento para permitir a qualquer um dos seus dependentes menores a utilização deste site. O utilizador não pode utilizar os nossos produtos para qualquer fim ilegal ou não autorizado, nem pode, na utilização do Serviço, violar quaisquer leis da sua jurisdição (incluindo, mas não se limitando às leis de direitos de autor). O utilizador não deverá transmitir quaisquer worms ou vírus ou qualquer código de natureza destrutiva. Uma violação ou violação de qualquer um dos Termosresultará na cessação imediata dos Serviços do utilizador.",
+    "section2": "SECÇÃO 2 - CONDIÇÕES GERAIS",
+    "section2Body": "Reservamo-nos o direito de recusar o serviço a qualquer pessoa, por qualquer razão e a qualquer momento. O utilizador compreende que o seu conteúdo (não incluindo informações de cartão de crédito), pode ser transferido sem encriptação e envolver (a) transmissões através de várias redes; e (b) alterações para se conformar e adaptar aos requisitos técnicos de ligação de redes ou dispositivos. As informações de cartão de crédito são sempre encriptadas durante a transferência através de redes. O utilizador concorda em não reproduzir, duplicar, copiar, vender, revender ou explorar qualquer parte do Serviço, utilização do Serviço, ou acesso ao Serviço ou qualquer contacto no website através do qual o serviço é fornecido, sem autorização expressa por escrito da nossa parte. Os títulos utilizados no presente acordo são incluídos apenas por conveniência e não limitarão ou de outra forma afectarão estes Termos.",
+    "section3": "SECÇÃO 3 - EXACTIDÃO, EXAUSTIVIDADE E ACTUALIDADE DA INFORMAÇÃO",
+    "section3Body": "Não somos responsáveis se a informação disponibilizada neste sítio não for exacta, completa ou actual. O material deste sítio é fornecido apenas para informação geral e não deve ser confiado ou utilizado como única base para tomar decisões sem consultar fontes de informação primárias, mais exactas, mais completas ou mais oportunas. Qualquer confiança no material deste sítio é por sua conta e risco. Este sítio pode conter certas informações históricas. A informação histórica, necessariamente, não é actual e é fornecida apenas para sua referência. Reservamo-nos o direito de modificar o conteúdo deste sítio em qualquer altura, mas não temos a obrigação de actualizar qualquer informação no nosso sítio. O utilizador concorda que é da sua responsabilidade monitorizar as alterações ao nosso sítio.",
+    "section4": "SECÇÃO 4 - MODIFICAÇÕES AO SERVIÇO E PREÇOS",
+    "section4Body": "Os preços dos nossos produtos estão sujeitos a alterações sem aviso prévio. Reservamo-nos o direito de, a qualquer momento, modificar ou descontinuar o Serviço (ou qualquer parte ou conteúdo do mesmo) sem aviso prévio. Não seremos responsáveis perante o Cliente ou qualquer terceiro por qualquer modificação, alteração de preço, suspensão ou descontinuação do Serviço.",
+    "section5": "SECÇÃO 5 - PRODUTOS OU SERVIÇOS (se aplicável)",
+    "section5Body": "Certos produtos ou serviços podem estar disponíveis exclusivamente online através do website. Estes produtos ou Serviços podem ter quantidades limitadas e estar sujeitos a devolução ou troca apenas de acordo com a nossa Política de Devolução. Fizemos todos os esforços para exibir com a maior precisão possível as cores e imagens dos nossos produtos que aparecem na loja. Não podemos garantir que a exibição de qualquer cor no monitor do seu computador seja precisa. Reservamo-nos o direito, mas não somos obrigados, de limitar as vendas dos nossos produtos ou serviços a qualquer pessoa, região geográfica ou jurisdição. Podemos exercer este direito numa base caso a caso. Reservamo-nos o direito de limitar as quantidades de quaisquer produtos ou Serviços que oferecemos. Todas as descrições de produtos ou preços de produtos estão sujeitas a alterações em qualquer altura e sem aviso prévio, a nosso exclusivo critério. Reservamo-nos o direito de descontinuar qualquer produto em qualquer altura. Qualquer oferta de qualquer produto ou serviço feita neste site é nula onde for proibida. Não garantimos que a qualidade de quaisquer produtos, Serviços, informações, ou outro material adquirido ou obtido pelo cliente satisfaça as suas expectativas, ou que quaisquer erros no Serviço sejam corrigidos.",
+    "section6": "SECÇÃO 6 - EXACTIDÃO DAS INFORMAÇÕES DE FACTURAÇÃO E DE CONTA",
+    "section6Body": "Reservamo-nos o direito de recusar qualquer encomenda que nos faça. Podemos, a nosso exclusivo critério, limitar ou cancelar quantidades adquiridas por pessoa, por agregado familiar ou por encomenda. Estas restrições podem incluir encomendas feitas pela ou sob a mesma conta de cliente, o mesmo cartão de crédito, e/ou encomendas que utilizem o mesmo endereço de facturação e/ou expedição. No caso de efectuarmos uma alteração ou cancelamento de uma encomenda, podemos tentar notificar o cliente contactando o endereço de correio electrónico e/ou de facturação/número de telefone fornecido no momento em que a encomenda foi efetuada. Reservamo-nos o direito de limitar ou proibir encomendas que, a nosso exclusivo critério, pareçam ter sido feitas por revendedores ou distribuidores. O cliente concorda em fornecer informações actuais, completas e precisas de compra e conta para todas as compras efetuadas na nossa loja. O cliente concorda em actualizar imediatamente a sua conta e outras informações, incluindo o seu endereço electrónico e números de cartão de crédito e datas de validade, para que possamos concluir as suas transações e contactá-lo sempre que necessário. Para mais pormenores, queira rever a nossa Política de Devoluções.",
+    "section7": "SECÇÃO 7 - FERRAMENTAS OPCIONAIS",
+    "section7Body": "Podemos fornecer-lhe acesso a ferramentas de terceiros sobreas quais não monitorizamos nem temos qualquer controlo ou input. O cliente reconhece e concorda que fornecemos acesso a tais ferramentas 'tal como estão' e 'tal como disponíveis' sem qualquer garantias, representações ou condições de qualquer tipo e sem qualquer endosso. Não teremos qualquer responsabilidade decorrente ou relacionada com a utilização de ferramentas opcionais de terceiros. Qualquer utilização pelo utilizador das ferramentas opcionais oferecidas através do site é inteiramente por sua conta e risco e o utilizador deverá assegurar-se de que conhece e aprova os termos em que as ferramentas são fornecidas pelo(s) fornecedor(es) relevante(s) de terceiros. Poderemos também, no futuro, oferecer novos Serviços e/oufuncionalidades através do sítio Web (incluindo, o lançamento de novas ferramentas e recursos). Tais novas funcionalidadese/ou Serviços estarão igualmente sujeitos aos presentes Termos de Serviço.",
+    "section8": "SECÇÃO 8 - LINKS DE TERCEIROS",
+    "section8Body": "Certos conteúdos, produtos e serviços disponíveis através do nosso Serviço podem incluir materiais de terceiros. As ligações de terceiros neste site podem direcioná-lo para sites de terceiros que não estejam filiados a nós. Não somos responsáveis por examinar ou avaliar o conteúdo ou exactidão e não garantimos e não teremos qualquer responsabilidade ou obrigação por quaisquer materiais ou websites de terceiros, ou por quaisquer outros materiais, produtos, ou Serviços de terceiros. Não somos responsáveis por quaisquer danos ou prejuízos relacionados com a compra ou utilização de bens, Serviços, recursos, conteúdo, ou quaisquer outras transacções efectuadas em relação a quaisquer websites de terceiros. Por favor, reveja cuidadosamente as políticas e práticas de terceiros e certifique-se de que as compreende antes de se envolver emqualquer transacção. Reclamações, preocupações, ou questões relacionadas com produtos de terceiros devem ser dirigidas a terceiros.",
+    "section9": "SECÇÃO 9 - COMENTÁRIOS DOS UTILIZADORES, FEEDBACK E OUTRAS SUBMISSÕES",
+    "section9Body": "Se, a nosso pedido, enviar certas submissões específicas (por exemplo, participações em concursos) ou sem um pedido nosso, enviar ideias, sugestões, propostas, planos ou outros materiais criativos, quer online, por correio electrónico, por correio postal, ou de outra forma (colectivamente, 'comentários'), concorda que podemos, a qualquer momento, sem restrições, editar, copiar, publicar, distribuir, traduzir e de outra forma utilizar em qualquer meio quaisquer comentários que nos envie. Não somos nem seremos obrigados (1) a manter quaisquer comentários confidenciais; (2) a pagar uma Compensação por quaisquer comentários; ou (3) a responder a quaisquer comentários. Podemos, mas não temos qualquer obrigação de monitorizar, editar ou remover conteúdos que determinemos a nosso exclusivo critério como ilegais, ofensivos, ameaçadores, caluniosos, difamatórios, pornográficos, obscenos ou de outra forma censuráveis ou que violem a propriedade intelectual de qualquer parte ou estes Termos de Serviço. O utilizador concorda que os seus comentários não violarão qualquer direito de terceiros, incluindo direitos de autor, marca registada, privacidade, personalidade ou outro direito pessoal ou de propriedade. O utilizador concorda ainda que osseus comentários não conterão material calunioso ou de outraforma ilegal, abusivo ou obsceno, nem conterão qualquer vírus de computador ou outro malware que possa de alguma forma afectar o funcionamento do Serviço ou de qualquer website relacionado. O utilizador não poderá utilizar um endereço de e-mail falso, fingir ser outra pessoa que não o próprio, ou de outra forma induzir-nos a erro ou a terceiros quanto à origem de quaisquer comentários. O utilizador é o único responsável por quaisquer comentários que faça e pela sua exactidão. Não assumimos qualquer responsabilidade por quaisquer comentários publicados pelo utilizador ou por terceiros.",
+    "section10": "SECÇÃO 10 - INFORMAÇÕES PESSOAIS",
+    "section10Body": "A sua apresentação de informações pessoais através da loja é regida pela nossa Política de Privacidade. Para ver a nossa Política de Privacidade, por favor consulte abaixo.",
+    "section11": "SECÇÃO 11 - ERROS, INEXACTIDÕES E OMISSÕES",
+    "section11Body": "Ocasionalmente pode haver informações no nosso site ou no Serviço que contenham erros tipográficos, imprecisões ou omissões que possam estar relacionadas com descrições de produtos, preços, promoções, ofertas, custos de envio de produtos, tempos de trânsito e disponibilidade. Reservamo-nos o direito de corrigir quaisquer erros, imprecisões ou omissões, e de alterar ou actualizar informações ou cancelar encomendas se qualquer informação no Serviço ou em qualquer website relacionado for imprecisa em qualquer altura sem aviso prévio (inclusive depois de o cliente ter submetido a sua encomenda). Não nos comprometemos a actualizar, alterar ou clarificar informações no Serviço ou em qualquer website relacionado, incluindo, sem limitação, informações sobre preços, excepto conforme exigido por lei. Nenhuma data especificada de actualização ou actualização aplicada no Serviço ou emqualquer website relacionado, deverá ser tomada para indicar que  todas as informações no Serviço ou em qualquer website relacionado foram modificadas ou actualizadas.",
+    "section12": "SECÇÃO 12 - UTILIZAÇÕES PROIBIDAS",
+    "section12Body": "Além de outras proibições estabelecidas nos Termos de Serviço, está proibido de utilizar o site ou o seu conteúdo: (a) para qualquer fim ilegal; (b) para solicitar a terceiros que realizem ou participem em quaisquer actos ilegais; (c) para violar quaisquer regulamentos internacionais, federais, provinciais ou estatais, regras, leis ou regulamentos locais; (d) para infringir ou violar os nossos direitos de propriedade intelectual ou os direitos de propriedade intelectual de terceiros; (e) assediar, abusar, insultar, prejudicar, difamar, caluniar, depreciar, intimidar, ou discriminar com base no sexo, orientação sexual, religião, etnia, raça, idade, origem nacional, ou deficiência; (f) apresentar informações falsas ou enganosas; (g) carregar ou transmitir vírus ou qualquer outro tipo de código malicioso que será ou poderá ser utilizado de qualquer forma que afecte a funcionalidade ou o funcionamento do Serviço ou de qualquer website relacionado, de outros websites, ou da Internet; (h) recolher ou localizar as informações pessoais de outros; (i) para enviar spam, phish, pharm, pretexto, spider, crawl, ou raspar; (j) para qualquer propósito obsceno ou imoral; ou (k) para interferir ou contornar as características de segurança do Serviço ou de qualquer website relacionado, de outros websites, ou da Internet. Reservamo-nos o direito de terminar a sua utilização do Serviço ou de qualquer website relacionado por violar qualquer uma das utilizações proibidas.",
+    "section13": "SECÇÃO 13 - EXCLUSÃO DE GARANTIAS; LIMITAÇÃO DE RESPONSABILIDADE",
+    "section13Body": "Não garantimos, representamos ou garantimos que a sua utilização do nosso serviço será ininterrupta, atempada, segura ou livre de erros. Não garantimos que os resultados que possam ser obtidos com a utilização do serviço serão exactos ou fiáveis. O cliente concorda que de tempos a tempos poderemos remover o serviço por períodos de tempo indefinidos ou cancelar o serviço a qualquer momento, sem aviso prévio. O cliente concorda expressamente que a sua utilização, ou incapacidade de utilização do serviço é por sua conta e risco. O serviço e todos os produtos e serviços entregues ao cliente através do serviço são (excepto conforme expressamente declarado por nós) fornecidos 'tal como estão' e 'conforme disponíveis' para utilização, sem qualquer representação, garantias ou condições de qualquer tipo, quer expressas ou implícitas, incluindo todas as garantias ou condições implícitas de comerciabilidade, qualidade comerciável, adequação a um determinado fim, durabilidade, título e não-infracção. Em nenhum caso a Seed and Spore, os nossos directores, funcionários, empregados, afiliados, agentes, empreiteiros, estagiários, fornecedores, prestadores de serviços ou licenciadores serão responsáveis por qualquer dano, perda, reclamação, ou qualquer dano direto, indireto, incidental, punitivo, especial, ou consequencial de qualquer tipo, incluindo, sem limitação, perda de lucros, perda de receitas, perda de poupanças, perda de dados, custos de substituição, ou quaisquer danos semelhantes, quer baseados em contrato, delito civil (incluindo negligência), responsabilidade estrita oude outra forma, decorrente da utilização de qualquer serviçoou de quaisquer produtos adquiridos através do serviço, ou por qualquer outra reclamação relacionada de qualquer forma com a sua utilização do serviço ou de qualquer produto, incluindo, entre outros, quaisquer erros ou omissões em qualquer conteúdo, ou qualquer perda ou dano de qualquer tipo incorrido como resultado da utilização do serviço ou de qualquer conteúdo (ou produto) publicado, transmitido, ou de outra forma disponibilizado através do serviço, mesmo que avisado da sua possibilidade. Dado que alguns estados ou jurisdições não permitem aexclusão ou a limitação de responsabilidade por danos consequentes ou incidentais, nesses estados ou jurisdições, a nossa responsabilidade será limitada à extensão máxima permitida por lei.",
+    "section14": "SECÇÃO 14 - INDEMNIZAÇÃO",
+    "section14Body": "O utilizador concorda em indemnizar, defender e manter inofensivos Seed and Spore e a nossa empresa-mãe, subsidiárias, afiliadas, sócios, funcionários, directores, agentes, empreiteiros, licenciadores, prestadores de serviços, subcontratantes, fornecedores, estagiários e empregados, isentos de qualquer reivindicação ou exigência, incluindo honorários razoáveis de advogados, feita por qualquer terceiro devido a ou resultante da violação dos presentes Termos de Serviço ou dos documentos por eles incorporados por referência, ou da violação de qualquer lei ou dos direitos de um terceiro.",
+    "section15": "SECÇÃO 15 - SEPARABILIDADE",
+    "section15Body": "No caso de qualquer disposição dos presentes Termos de Serviço ser considerada ilegal, nula ou inaplicável, taldisposição será, no entanto, aplicável na medida máxima permitida pela lei aplicável, e a parte inaplicável será considerada separada dos presentes Termos de Serviço, tal determinação não afectará a validade e a aplicabilidade de quaisquer outras disposições restantes.",
+    "section16": "SECÇÃO 16 - CESSAÇÃO",
+    "section16Body": "As obrigações e responsabilidades das partes incorridas antes da data de rescisão sobreviverão à rescisão deste acordo para todos os efeitos. Estes Termos de Serviço são efectivos a menos que e até à sua rescisão por si ou por nós. O cliente pode rescindir estes Termos de Serviço a qualquer momento, notificando-nos de que não deseja mais utilizar os nossos Serviços, ou quando cessar a utilização do nosso site. Se, a nosso exclusivo critério, o cliente não cumprir, ou suspeitarmos que não cumpriu, qualquer termo ou disposição dos presentes Termos de Serviço, também poderemos rescindir o presente contrato a qualquer momento sem aviso prévio e o cliente permanecerá responsável por todos os montantes devidos até e incluindo a data de rescisão; e/ou, consequentemente, poderá negar o acesso do cliente aos nos Serviços (ou a qualquer parte dos mesmos).",
+    "section17": "SECÇÃO 17 - ACORDO INTEGRAL",
+    "section17Body": "O não exercício ou a não aplicação de qualquer direito ou disposição destes Termos de Serviço não constituirá uma renúncia a tal direito ou disposição. Os presentes Termos de Serviço e quaisquer políticas ou regras operacionais publicadas por nós neste site ou em relação ao Serviço constituem o acordo e entendimento total entre o cliente e nós e regem a utilização do Serviço, substituindo quaisquer acordos, comunicações e propostas anteriores ou contemporâneas, orais ou escritas, entre o cliente e nós (incluindo, mas não se limitando a, quaisquer versões anteriores dos Termos de Serviço). Quaisquer ambiguidades na interpretação dos presentesTermos de Serviço não deverão ser interpretadas contra a parte redatora.",
+    "section18": "SECÇÃO 18 - LEI APLICÁVEL",
+    "section18Body": "Estes Termos de Serviço e quaisquer acordos separados através dos quais lhe prestamos Serviços serão regidos e interpretados de acordo com as leis de Portugal.",
+    "section19": "SECÇÃO 19 - ALTERAÇÕES AOS TERMOS DE SERVIÇO",
+    "section19Body": "Pode rever a versão mais actual dos Termos de Serviço em qualquer altura nesta página. Reservamo-nos o direito, a nosso exclusivo critério, de actualizar, alterar ou substituir qualquer parte destes Termos de Serviço, colocando actualizações e alterações no nosso website. É da sua responsabilidade verificá-lo periodicamente para alterações. O uso continuado ou acesso ao nosso website ou ao Serviço, após a publicação de quaisquer alterações aos presentes Termos de Serviço, constitui aceitação dessas alterações.",
+    "section20": "SECÇÃO 20 - INFORMAÇÕES DE CONTACTO",
+    "section20Body": "As perguntas sobre os Termos de Serviço devem ser-nos enviadas para seedandspore@proton.me. Veja os nossos contactos abaixo:"
+  },
+  "refundPolicy": {
+    "header": "POLÍTICA DE REEMBOLSO",
+    "body": "Temos uma política de devolução de 14 dias, o que significa que tem 14 dias após receber o seu artigo para solicitar uma devolução. Para ser elegível para uma devolução, o seu artigo deve estar nas mesmas condições em que o recebeu, não utilizado e na sua embalagem original. Precisará também do recibo ou prova de compra. Para iniciar uma devolução, pode contactar-nos em seedandspore@proton.me. Note que as devoluções terão de ser enviadas para o seguinte endereço: Rua Alfageme de Santarém 36, Porto, PT-13, 4150-046, Portugal. Se a sua devolução for aceite, enviará o artigo de volta para o endereço Seed and Spore. Note que terá de ser o próprio a pagar o envio. Os artigos enviados de volta sem primeiro solicitar uma devolução não serão aceites.",
+    "damagesAndIssues": "Danos e Questões",
+    "damagesAndIssuesBody": "Por favor, inspeccione a sua encomenda após a recepção e contacte-nos imediatamente se o artigo estiver defeituoso, danificado, ou se receber o artigo errado, para que possamos avaliar o problema e corrigi-lo.Certos tipos de artigos não podem ser devolvidos, como bens perecíveis (tais como alimentos). Por favor contacte-nos se tiver dúvidas ou preocupações sobre o seu artigo específico. Infelizmente, não podemos aceitar devoluções de artigos à venda ou cartões de oferta.",
+    "exchanges": "Trocas",
+    "exchangesBody": "A forma mais rápida de garantir que obtém o que deseja é devolver o artigo que tem e, uma vez aceite a devolução, fazer uma compra separada para o novo artigo. Período de reflexão de 3 dias na União Europeia Não obstante o acima exposto, se a mercadoria estiver a ser enviada para a União Europeia, tem o direito de cancelar ou devolver a sua encomenda dentro de 3 dias por qualquer razão e sem justificação. Tal como acima referido, o seu artigo deve estar nas mesmas condições em que o recebeu, não utilizado e na sua embalagem original. Precisará também do recibo ou prova de compra.",
+    "refunds": "Reembolsos",
+    "refundsBody": "Iremos notificá-lo assim que recebermos e inspeccionarmos o seu regresso para o informar se o reembolso foi aprovado ou não. Se aprovado, será automaticamente reembolsado no seu método de pagamento original no prazo de 10 dias úteis. Lembre-se de que pode levar algum tempo para o seu banco ou empresa de cartões de crédito processar e afixar também o reembolso. Se passaram mais de 15 dias úteis desde que aprovámos a sua devolução, por favor contacte-nos em seedandspore@proton.me."
+  },
+  "privacyPolicy": {
+    "header": "POLÍTICA DE PRIVACIDADE",
+    "body": "Esta Política de Privacidade descreve como a sua informaçãopessoal é recolhida, utilizada e partilhada quando visita ou faz uma  compra em www.seedandspore.pt.",
+    "personalInfo": "INFORMAÇÕES PESSOAIS QUE RECOLHEMOS",
+    "personalInfoBody": "Quando faz uma compra ou tenta fazer uma compra através do Site, recolhemos determinadas informações do utilizador, incluindo o seu nome, endereço de facturação, endereço de envio, informações de pagamento (incluindo números de cartão de crédito, endereço de correio electrónico e número de telefone).  Referimo-nos a estas informações como 'Informações de Encomenda'. Quando falamos de 'Informação Pessoal' nesta Política de Privacidade, estamos a falar de Informação de Encomenda.",
+    "howDoWeUse": "COMO É QUE UTILIZAMOS AS SUAS INFORMAÇÕES PESSOAIS?",
+    "howDoWeUseBody": "Utilizamos as Informações de Encomenda que recolhemos geralmente para cumprir quaisquer encomendas feitas através do Site (incluindo o processamento das suas informações de pagamento, organização do envio e fornecimento de facturas e/ou confirmações de encomenda).  Além disso, utilizamos está Informação de Encomenda para: Comunicar consigo; Verificar as nossas encomendas quanto a potenciais riscos ou fraudes; e Quando de acordo com as preferências que partilhou connosco, fornecer-lhe informações ou publicidade relacionadas com os nossos produtos ou serviços.",
+    "sharingPersonalInfo": "PARTILHANDO AS SUAS INFORMAÇÕES PESSOAIS",
+    "sharingPersonalInfoBody": "Partilhamos a sua Informação Pessoal com terceiros para nos ajudar a utilizar a sua Informação Pessoal, tal como descrito acima.  Por exemplo, utilizamos a Sendgrid e a Stripe para alimentar a nossa loja online - pode ler mais sobre como a Sendgrid e a Stripe utilizam as suas Informações Pessoais aqui: https://stripe.com/de-mt/privacy https://sendgrid.com/policies/security/ Finalmente, podemos também partilhar as suas InformaçõesPessoais para cumprir as leis e regulamentos aplicáveis, para responder a uma intimação, mandado de busca ou outro pedido legal de informação que recebemos, ou para proteger de outra forma os nossos direitos.",
+    "doNotTrack": "NÃO RASTREAR",
+    "doNotTrackBody": "Note que não alteramos a recolha de dados e as práticas de utilização do nosso Sítio quando vemos um sinal de NãoRastrear do seu navegador.",
+    "yourRights": "OS SEUS DIREITOS",
+    "yourRightsBody": "Se for um residente europeu, tem o direito de aceder às informações pessoais que temos sobre si e de solicitar que as suas informações pessoais sejam corrigidas, actualizadas, ou apagadas. Se desejar exercer este direito, queira contactar-nos através das informações de contacto abaixo. Além disso, se for um residente europeu, notamos que estamos a processar as suas informações para cumprir contratos que possamos ter consigo (por exemplo, se fizer uma encomenda através do Sítio), ou para prosseguir os nossos legítimos interesses comerciais enumerados acima.  Além disso, note que as suas informações serão transferidas para fora da Europa, inclusive para o Canadá e os Estados Unidos da América.",
+    "dataRetention": "RETENÇĀO DE DADOS",
+    "dataRetentionBody": "Quando fizer uma encomenda através do Site, manteremos a sua Informação de Encomenda para os nossos registos, a menos que e até que nos peça para apagarmos esta informação.",
+    "changes": "MUDANÇAS",
+    "changesBody": "Podemos atualizar esta política de privacidade de tempos a tempos a fim de reflectir, por exemplo, alterações às nossas práticas ou por outras razões operacionais, legais ou regulamentares.",
+    "contactUs": "CONTACTE-NOS",
+    "contactUsBody": "Para mais informações sobre as nossas práticas de privacidade, se tiver perguntas ou se quiser fazer uma queixa, contacte-nos por e-mail para seedandspore@proton.me ou por correio utilizando os detalhes fornecidos: Rua Alfageme de Santarém 36, Porto, PT-13, 4150-046, Portugal"
+  },
+  "errorState": {
+    "header": "Oops! Ocorreu um erro",
+    "body": "Pedimos desculpa pelo inconveniente! Tente fazer reload da página!"
+  }
 }

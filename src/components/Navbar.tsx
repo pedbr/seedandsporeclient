@@ -25,7 +25,7 @@ const Navbar = () => {
   const navigate = useNavigate()
   const location = useLocation()
   const [isCartOpen, setCartOpen] = useState(false)
-  const { i18n } = useTranslation()
+  const { i18n, t } = useTranslation()
 
   const [languageMenuAnchorEl, setLanguageMenuAnchorEl] =
     useState<null | HTMLElement>(null)
@@ -149,13 +149,15 @@ const Navbar = () => {
                   }}
                 >
                   <MenuItem onClick={() => navigate('contact')}>
-                    Contact
+                    {t('navbar.contact')}
                   </MenuItem>
-                  <MenuItem onClick={() => navigate('store')}>Store</MenuItem>
+                  <MenuItem onClick={() => navigate('store')}>
+                    {t('navbar.store')}
+                  </MenuItem>
                 </Menu>
               </Box>
               <Box sx={{ display: { xs: 'none', md: 'flex' } }}>
-                <Tooltip title='Reach out to us!'>
+                <Tooltip title={t('navbar.reachOut')}>
                   <IconButton
                     color={'inherit'}
                     sx={{ marginRight: 2 }}
@@ -176,7 +178,7 @@ const Navbar = () => {
                     />
                   </IconButton>
                 </Tooltip>
-                <Tooltip title='Visit our shop'>
+                <Tooltip title={t('navbar.visitShop')}>
                   <IconButton
                     color={'inherit'}
                     sx={{ marginRight: 2 }}

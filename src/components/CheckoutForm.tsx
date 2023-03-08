@@ -2,12 +2,14 @@ import { LoadingButton } from '@mui/lab'
 import { Box, Typography } from '@mui/material'
 import { PaymentElement, useElements, useStripe } from '@stripe/react-stripe-js'
 import { useState } from 'react'
+import { useTranslation } from 'react-i18next'
 import useStore from '../store'
 
 export default function CheckoutForm() {
   const stripe = useStripe()
   const elements = useElements()
   const { cartItems } = useStore()
+  const { t } = useTranslation()
 
   const [message, setMessage] = useState<string | undefined>()
   const [isLoading, setIsLoading] = useState(false)
@@ -58,7 +60,7 @@ export default function CheckoutForm() {
             id='submit'
             type='submit'
           >
-            <span id='button-text'>Pay now</span>
+            <span id='button-text'>{t('checkout.payNow')}</span>
           </LoadingButton>
         </Box>
 

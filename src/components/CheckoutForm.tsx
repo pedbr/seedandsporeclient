@@ -29,8 +29,8 @@ export default function CheckoutForm() {
       elements,
       confirmParams: {
         // Make sure to change this to your payment completion page
-        // return_url: 'https://seedandspore.pt/success',
-        return_url: 'http://localhost:3006/success',
+        return_url: 'https://seedandspore.pt/success',
+        // return_url: 'http://localhost:3006/success',
       },
     })
 

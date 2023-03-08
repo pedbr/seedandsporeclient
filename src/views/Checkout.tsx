@@ -14,8 +14,11 @@ import useStore from '../store'
 import { appearance } from '../styles/stripeAppearance'
 import { getShippingCost } from '../utils'
 
+// const stripePromise = loadStripe(
+//   'pk_test_51LttTdCkXFiy2LWeKmzZY48CKBd3AmoFMaB8QvVi2ErysC4LbQ48idsaAFfldri889fYIoPgPS5K8z51iql2jfIE00MIKJbl8q'
+// )
 const stripePromise = loadStripe(
-  'pk_test_51LttTdCkXFiy2LWeKmzZY48CKBd3AmoFMaB8QvVi2ErysC4LbQ48idsaAFfldri889fYIoPgPS5K8z51iql2jfIE00MIKJbl8q'
+  'pk_live_51MEgUFBxpOqWPrlK4JwOmgSjoVKWRZDIgggqYxdAy0VgQ9y8DdDaAgoqvGPaFU1ehYqKHH90OWhOQ9QynakMIwjK00d6spIf7H'
 )
 
 const Checkout = () => {

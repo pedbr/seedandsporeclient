@@ -11,7 +11,7 @@ import {
 import { useTranslation } from 'react-i18next'
 import { useNavigate } from 'react-router'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
-import { getActualPrice } from '../utils'
+import { formatNumberToTwoDecimalString, getActualPrice } from '../utils'
 
 interface ProductCardProps {
   id: string
@@ -74,12 +74,14 @@ const ProductCard = ({
                 textDecoration: 'line-through',
               }}
               variant='body2'
-            >{`${price} EUR`}</Typography>
+            >{`${formatNumberToTwoDecimalString(price)} EUR`}</Typography>
           )}
           <Typography
             color={isDiscountActive ? 'success.main' : 'text.primary'}
             variant='body2'
-          >{`${getActualPrice(price, discount)} EUR`}</Typography>
+          >{`${formatNumberToTwoDecimalString(
+            getActualPrice(price, discount)
+          )} EUR`}</Typography>
         </CardContent>
       </CardActionArea>
     </Card>

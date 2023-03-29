@@ -21,7 +21,7 @@ import useFetchById from '../hooks/useFetchById'
 import useStore from '../store'
 import { CartItem } from '../types/cartItem'
 import { ProductType } from '../types/products'
-import { getActualPrice } from '../utils'
+import { formatNumberToTwoDecimalString, getActualPrice } from '../utils'
 
 const SingleProduct = () => {
   const { productId } = useParams()
@@ -144,15 +144,17 @@ const SingleProduct = () => {
                 }}
                 variant={'body1'}
                 fontSize={'24px'}
-              >{`${price} €/${t('store.unit')}`}</Typography>
+              >{`${formatNumberToTwoDecimalString(price)} €/${t(
+                'store.unit'
+              )}`}</Typography>
               {isDiscountActive && (
                 <Typography
                   variant={'body1'}
                   fontSize={'24px'}
                   color={'success.main'}
-                >{`${getActualPrice(price, discount)} €/${t(
-                  'store.unit'
-                )}`}</Typography>
+                >{`${formatNumberToTwoDecimalString(
+                  getActualPrice(price, discount)
+                )} €/${t('store.unit')}`}</Typography>
               )}
             </Stack>
 

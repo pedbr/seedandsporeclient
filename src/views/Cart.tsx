@@ -11,7 +11,7 @@ import { api } from '../api'
 import EmptyState from '../components/EmptyState'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useStore from '../store'
-import { getShippingCost } from '../utils'
+import { formatNumberToTwoDecimalString, getShippingCost } from '../utils'
 
 interface CartProps {
   onClose: () => void
@@ -138,7 +138,8 @@ const Cart = ({ onClose }: CartProps) => {
                       {item.description}
                     </Typography>
                     <Typography variant={'body2'}>
-                      {t('cart.costUni')} {item.price} €
+                      {t('cart.costUni')}{' '}
+                      {formatNumberToTwoDecimalString(item.price)} €
                     </Typography>
                     <Typography variant={'body2'}>
                       {t('cart.quantity')} {item.quantity}
@@ -169,7 +170,9 @@ const Cart = ({ onClose }: CartProps) => {
         <Stack>
           <Stack direction={'row'} justifyContent={'space-between'} my={2}>
             <Typography variant='body2'>{t('cart.total')}</Typography>
-            <Typography variant='body2'>{cartTotalPrice} EUR</Typography>
+            <Typography variant='body2'>
+              {formatNumberToTwoDecimalString(cartTotalPrice)} EUR
+            </Typography>
           </Stack>
           <Stack direction={'row'} justifyContent={'space-between'}>
             <LoadingButton

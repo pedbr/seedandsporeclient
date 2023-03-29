@@ -12,7 +12,7 @@ import UserInfoElement from '../components/UserInfoElement'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useStore from '../store'
 import { appearance } from '../styles/stripeAppearance'
-import { getShippingCost } from '../utils'
+import { formatNumberToTwoDecimalString, getShippingCost } from '../utils'
 
 // const stripePromise = loadStripe(
 //   'pk_test_51LttTdCkXFiy2LWeKmzZY48CKBd3AmoFMaB8QvVi2ErysC4LbQ48idsaAFfldri889fYIoPgPS5K8z51iql2jfIE00MIKJbl8q'
@@ -133,7 +133,8 @@ const Checkout = () => {
                           {item.description}
                         </Typography>
                         <Typography variant={'body2'}>
-                          {t('checkout.costUni')} {item.price} €
+                          {t('checkout.costUni')}{' '}
+                          {formatNumberToTwoDecimalString(item.price)} €
                         </Typography>
                         <Typography variant={'body2'}>
                           {t('checkout.quantity')} {item.quantity}
@@ -149,11 +150,13 @@ const Checkout = () => {
             {t('checkout.shipping')}
           </Typography>
           <Typography mb={3}>
-            {t('checkout.shippingCost')} {shippingCost}€
+            {t('checkout.shippingCost')}{' '}
+            {formatNumberToTwoDecimalString(shippingCost)}€
           </Typography>
           <Box p={2} display={'flex'} justifyContent={'center'}>
             <Typography variant={'h3'}>
-              {t('checkout.total')} {totalOrderCost}€
+              {t('checkout.total')}{' '}
+              {formatNumberToTwoDecimalString(totalOrderCost)}€
             </Typography>
           </Box>
         </Stack>

@@ -15,7 +15,7 @@ export const getActualPrice = (price: number, discount: number) => {
   if (discount > 0) {
     return price * (1 - discount / 100)
   }
-  return Number(price.toFixed(2))
+  return price
 }
 
 // - Up to 3kg -> 7EUR

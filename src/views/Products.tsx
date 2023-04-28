@@ -1,5 +1,6 @@
 import { Box, Grid } from '@mui/material'
-import { useMemo } from 'react'
+import { useSnackbar } from 'notistack'
+import { useEffect, useMemo } from 'react'
 import { useTranslation } from 'react-i18next'
 
 import EmptyState from '../components/EmptyState'
@@ -11,6 +12,7 @@ import { ProductType } from '../types/products'
 
 const Products = () => {
   const { i18n, t } = useTranslation()
+  const { enqueueSnackbar } = useSnackbar()
 
   const currentLocale: string = useMemo(() => i18n.language, [i18n.language])
 
@@ -18,6 +20,13 @@ const Products = () => {
     'products',
     '/products'
   )
+
+  useEffect(() => {
+    enqueueSnackbar(t('store.freeShipping'), {
+      variant: 'success',
+      anchorOrigin: { horizontal: 'center', vertical: 'top' },
+    })
+  }, [enqueueSnackbar, t])
 
   if (isLoading)
     return (

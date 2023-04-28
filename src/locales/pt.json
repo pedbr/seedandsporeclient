@@ -39,7 +39,8 @@
     "quantity": "Quantidade",
     "successfullyAddedToCart": "Este producto foi adicionado ao seu carrinho! 🎉",
     "addToCart": "Adicionar ao carrinho",
-    "discount": "Promoção"
+    "discount": "Promoção",
+    "freeShipping": "Aproveite agora envio gratuito em todas as encomendas!"
   },
   "cart": {
     "createOrderError": "Ocorreu um erro ao criar a sua encomenda",

@@ -12,7 +12,7 @@ import UserInfoElement from '../components/UserInfoElement'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useStore from '../store'
 import { appearance } from '../styles/stripeAppearance'
-import { formatNumberToTwoDecimalString, getShippingCost } from '../utils'
+import { formatNumberToTwoDecimalString } from '../utils'
 
 // const stripePromise = loadStripe(
 //   'pk_test_51LttTdCkXFiy2LWeKmzZY48CKBd3AmoFMaB8QvVi2ErysC4LbQ48idsaAFfldri889fYIoPgPS5K8z51iql2jfIE00MIKJbl8q'
@@ -22,13 +22,12 @@ const stripePromise = loadStripe(
 )
 
 const Checkout = () => {
-  const { cartTotalPrice, cartTotalWeight, cartItems, currentOrder } =
-    useStore()
+  const { cartTotalPrice, cartItems, currentOrder } = useStore()
   const [clientSecret, setClientSecret] = useState('')
   const navigate = useNavigate()
   const { t } = useTranslation()
 
-  const shippingCost = getShippingCost(cartTotalWeight, cartTotalPrice)
+  const shippingCost = 0
 
   const totalOrderCost = cartTotalPrice + shippingCost
 

@@ -39,7 +39,8 @@
     "quantity": "Quantity",
     "successfullyAddedToCart": "This product was added to your cart! 🎉",
     "addToCart": "Add to cart",
-    "discount": "Discount"
+    "discount": "Discount",
+    "freeShipping": "Enjoy free shipping on all orders!"
   },
   "cart": {
     "createOrderError": "There was an error creating your order",

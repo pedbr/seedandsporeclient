@@ -11,7 +11,7 @@ import { api } from '../api'
 import EmptyState from '../components/EmptyState'
 import { PRODUCT_DEFAULT_IMAGE } from '../constants'
 import useStore from '../store'
-import { formatNumberToTwoDecimalString, getShippingCost } from '../utils'
+import { formatNumberToTwoDecimalString } from '../utils'
 
 interface CartProps {
   onClose: () => void
@@ -24,7 +24,6 @@ const Cart = ({ onClose }: CartProps) => {
     removeFromCart,
     cartTotalPrice,
     setCurrentOrder,
-    cartTotalWeight,
   } = useStore()
   const navigate = useNavigate()
   const { enqueueSnackbar } = useSnackbar()
@@ -33,7 +32,7 @@ const Cart = ({ onClose }: CartProps) => {
 
   const isCartEmpty = !Boolean(cartItems.length)
 
-  const shippingCost = getShippingCost(cartTotalWeight, cartTotalPrice)
+  const shippingCost = 0
 
   const totalOrderCost = cartTotalPrice + shippingCost
 

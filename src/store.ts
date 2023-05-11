@@ -21,6 +21,7 @@ interface Store {
   orderDeliveryPostCode: string | null
   orderDeliveryLocation: string | null
   orderBillingAddress: string | null
+  shippingType: 'standard' | 'premium'
   resetCart: () => void
   addToCart: (item: CartItem) => void
   removeFromCart: (item: CartItem) => void
@@ -32,6 +33,7 @@ interface Store {
   setOrderDeliveryPostCode: (value: string) => void
   setOrderDeliveryLocation: (value: string) => void
   setOrderBillingAddress: (value: string) => void
+  setShippingType: (value: 'standard' | 'premium') => void
 }
 
 const useStore = create(
@@ -50,6 +52,7 @@ const useStore = create(
       orderDeliveryPostCode: null,
       orderDeliveryLocation: null,
       orderBillingAddress: null,
+      shippingType: 'standard',
       setTheme: (newTheme) => set({ theme: newTheme }),
       resetCart: () =>
         set({
@@ -105,6 +108,7 @@ const useStore = create(
       setOrderDeliveryLocation: (value) =>
         set({ orderDeliveryLocation: value }),
       setOrderBillingAddress: (value) => set({ orderBillingAddress: value }),
+      setShippingType: (value) => set({ shippingType: value }),
     }),
     {
       name: 'seed-spore',

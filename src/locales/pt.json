@@ -92,7 +92,11 @@
     "postCode": "Codigo Postal",
     "location": "Localidade",
     "country": "País",
-    "billingAddress": "Morada de Facturação"
+    "billingAddress": "Morada de Facturação",
+    "standardShipping": "Envío Standard (+0€)",
+    "standardShippingDescription": "Entrega entre 3-5 dias úteis",
+    "premiumShipping": "Envío Premium (+4€)",
+    "premiumShippingDescription": "Entrega entre 1-2 dias úteis"
   },
   "termsAndConditions": {
     "title": "TERMOS E CONDIÇÕES",

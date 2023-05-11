@@ -21,6 +21,7 @@ const SuccessfulPurchase = () => {
     orderDeliveryPostCode,
     orderDeliveryLocation,
     orderBillingAddress,
+    shippingType,
   } = useStore()
   const navigate = useNavigate()
   const { t } = useTranslation()
@@ -36,6 +37,8 @@ const SuccessfulPurchase = () => {
       orderDeliveryPostCode,
       orderDeliveryLocation,
       orderBillingAddress,
+      shippingType,
+      shippingCost: shippingType === 'premium' ? 4 : 0,
     })
   })
 

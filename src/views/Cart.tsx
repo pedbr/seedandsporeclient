@@ -32,9 +32,7 @@ const Cart = ({ onClose }: CartProps) => {
 
   const isCartEmpty = !Boolean(cartItems.length)
 
-  const shippingCost = 0
-
-  const totalOrderCost = cartTotalPrice + shippingCost
+  const totalOrderCost = cartTotalPrice
 
   const handleCheckout = async () => {
     setIsLoading(true)
@@ -42,7 +40,7 @@ const Cart = ({ onClose }: CartProps) => {
       const { data } = await api.post('/orders', {
         products: cartItems,
         productsPrice: cartTotalPrice,
-        shippingCost,
+        shippingCost: 0,
         totalPrice: totalOrderCost,
       })
       if (data?.data) {

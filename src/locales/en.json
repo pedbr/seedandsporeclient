@@ -92,7 +92,11 @@
     "postCode": "Post Code",
     "location": "Location",
     "country": "Country",
-    "billingAddress": "Billing Address"
+    "billingAddress": "Billing Address",
+    "standardShipping": "Standard shipping (+0€)",
+    "standardShippingDescription": "Delivery between 3-5 work days",
+    "premiumShipping": "Premium Shipping (+4€)",
+    "premiumShippingDescription": "Delivery between 1-2 work days"
   },
   "termsAndConditions": {
     "title": "TERMS AND CONDITIONS",

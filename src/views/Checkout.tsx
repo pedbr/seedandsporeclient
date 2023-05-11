@@ -1,4 +1,4 @@
-import { Box, Button, Grid, Stack, Typography } from '@mui/material'
+import { Box, Button, Checkbox, Grid, Stack, Typography } from '@mui/material'
 import { Elements } from '@stripe/react-stripe-js'
 import { loadStripe } from '@stripe/stripe-js'
 import { useEffect, useState } from 'react'
@@ -22,12 +22,12 @@ const stripePromise = loadStripe(
 )
 
 const Checkout = () => {
-  const { cartTotalPrice, cartItems, currentOrder } = useStore()
+  const { cartTotalPrice, cartItems, currentOrder, setShippingType } =
+    useStore()
   const [clientSecret, setClientSecret] = useState('')
   const navigate = useNavigate()
   const { t } = useTranslation()
-
-  const shippingCost = 0
+  const [shippingCost, setShippingCost] = useState(0)
 
   const totalOrderCost = cartTotalPrice + shippingCost
 
@@ -148,6 +148,36 @@ const Checkout = () => {
           <Typography variant={'caption'} mt={2}>
             {t('checkout.shipping')}
           </Typography>
+          <Box display='flex' alignItems='center' mb={2} mt={1}>
+            <Checkbox
+              checked={shippingCost === 0}
+              onClick={() => {
+                setShippingCost(0)
+                setShippingType('standard')
+              }}
+            />
+            <Box>
+              <Typography>{t('checkout.standardShipping')}</Typography>
+              <Typography variant='caption'>
+                {t('checkout.standardShippingDescription')}
+              </Typography>
+            </Box>
+          </Box>
+          <Box display='flex' alignItems='center' mb={2}>
+            <Checkbox
+              checked={shippingCost === 4}
+              onClick={() => {
+                setShippingCost(4)
+                setShippingType('premium')
+              }}
+            />
+            <Box>
+              <Typography>{t('checkout.premiumShipping')}</Typography>
+              <Typography variant='caption'>
+                {t('checkout.premiumShippingDescription')}
+              </Typography>
+            </Box>
+          </Box>
           <Typography mb={3}>
             {t('checkout.shippingCost')}{' '}
             {formatNumberToTwoDecimalString(shippingCost)}€
